@@ -26,7 +26,7 @@ _UpgradeReport_Files/
 bin/
 obj/
 TestResults/
-.idea/
+/.idea/
 ###################
 # Web publish log #
 ###################
