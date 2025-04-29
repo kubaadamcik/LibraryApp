@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZaverecnyProjekt"
         mc:Ignorable="d"
+<<<<<<< Updated upstream
         Title="MainWindow" Height="700" Width="600">
     
     <Grid>
@@ -34,5 +35,20 @@
             <Button Content="Správa výpůjček" FontSize="14" Margin="10"/>
             <Button Content="Nápověda" FontSize="14" Margin="10"/>
         </StackPanel>
+=======
+        Title="MainWindow" Height="800" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+>>>>>>> Stashed changes
     </Grid>
 </Window>

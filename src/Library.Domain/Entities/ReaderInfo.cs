@@ -1,8 +1,13 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Library.Domain.Entities;
 
 public class ReaderInfo
 {
-    public List<Book> BorrowedBooks { get; set; }
+    // TODO: Added foreign key attribute to the userid property
+    public int UserId { get; set; }
+    public int CurrentCountOfBorrowedBooks { get; set; }
+    public int BorrowedBooksCount { get; set; }
 
-    // TODO: Complete the class
+    public virtual User User { get; set; }
 }
