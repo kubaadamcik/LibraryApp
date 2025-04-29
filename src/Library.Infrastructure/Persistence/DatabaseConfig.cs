@@ -10,10 +10,18 @@ namespace Library.Infrastructure.Persistence
     {
         public static string GetDatabasePath()
         {
-            string appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            string dbFolder = Path.Combine(appDataPath, "MyWpfApp");
-            Directory.CreateDirectory(dbFolder);
-            return Path.Combine(dbFolder, "users.db");
+            // Get the directory where the executing assembly is located
+            string baseDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            
+            // Navigate to the Persistence folder
+            // Assumes you're running from bin\Debug\net9.0\ or similar
+            string persistenceFolder = Path.GetFullPath(Path.Combine(baseDirectory, "..", "..", "..", "Persistence"));
+            
+            // Ensure the directory exists
+            Directory.CreateDirectory(persistenceFolder);
+            
+            // Return the full path to the database file
+            return Path.Combine(persistenceFolder, "library.db");
         }
     }
 }

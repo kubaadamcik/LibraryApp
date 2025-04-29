@@ -19,7 +19,6 @@ namespace Library.Infrastructure.Persistence
 
         protected void OnModelCreating(ModelBuilder modelBuilder)
         {
-            
         }
     }
 }
