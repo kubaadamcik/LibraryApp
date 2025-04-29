@@ -4,11 +4,10 @@ namespace Library.Domain.Entities;
 
 public class ReaderInfo
 {
-    // TODO: Added foreign key attribute to the userid property
     public int UserId { get; set; }
     public int CurrentCountOfBorrowedBooks { get; set; }
     public int BorrowedBooksCount { get; set; }
     
     [ForeignKey("UserId")]
-    public virtual User User { get; set; }
+    public virtual User? User { get; set; }
 }
