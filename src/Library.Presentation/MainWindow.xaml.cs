@@ -20,4 +20,20 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
     }
+    
+    private void CloseApp_Click(object sender, RoutedEventArgs e)
+    {
+        this.Close();
+    }
+    
+    private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+    {
+        if (e.ButtonState == MouseButtonState.Pressed)
+            this.DragMove();
+    }
+
+    private void MinimalizeApp_Click(object sender, RoutedEventArgs e)
+    {
+        this.WindowState = WindowState.Minimized;
+    }
 }
