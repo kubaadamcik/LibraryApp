@@ -5,18 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZaverecnyProjekt"
         mc:Ignorable="d"
-        Title="MainWindow" Height="800" Width="800">
+        Title="MainWindow" Height="700" Width="600">
+    
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
+        
+        <TextBlock Text="Knihovna"
+                   FontSize="26"
+                   FontWeight="Bold"
+                   Margin="10"
+                   HorizontalAlignment="Center"
+                   Grid.Row="0"/>
+        
+        <UniformGrid Rows="2" Columns="3" Margin="40" Grid.Row="1">
+            <Button Content="Vypůjčit knihu" FontSize="16" Margin="10" />
+            <Button Content="Vrátit knihu" FontSize="16" Margin="10"/>
+            <Button Content="Zobrazit knihy" FontSize="16" Margin="10"/>
+            <Button Content="Registrovat uživatele" FontSize="16" Margin="10"/>
+            <Button Content="Spravovat uživatele" FontSize="16" Margin="10"/>
+            <Button Content="Nastavení" FontSize="16" Margin="10"/>
+        </UniformGrid>
+        
+        <StackPanel Orientation="Horizontal" Margin="20" Grid.Row="2" HorizontalAlignment="Center">
+            <Button Content="Správa výpůjček" FontSize="14" Margin="10"/>
+            <Button Content="Nápověda" FontSize="14" Margin="10"/>
+        </StackPanel>
     </Grid>
 </Window>
