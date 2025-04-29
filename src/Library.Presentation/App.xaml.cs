@@ -22,9 +22,11 @@ public partial class App : Application
 
         var services = new ServiceCollection();
         string dbPath = DatabaseConfig.GetDatabasePath();
-        services.AddDbContext<AppDatabaseContext>(options =>
+        services.AddDbContext<DatabaseContext>(options =>
         {
             options.UseSqlite($"Data Source={dbPath}");
         });
+        
+        var serviceProvider = services.BuildServiceProvider();
     }
 }

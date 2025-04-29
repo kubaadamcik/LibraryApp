@@ -8,13 +8,18 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.Infrastructure.Persistence
 {
-    public class AppDatabaseContext : DbContext
+    public class DatabaseContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
 
-        public AppDatabaseContext(DbContextOptions<AppDatabaseContext> options) : base(options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
+        
+        }
 
+        protected void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            
         }
     }
 }
