@@ -39,5 +39,7 @@ public class ReaderService : IReaderService
     public async Task AddReader(User user)
     {
         await _context.Readers.AddAsync(user);
+
+        await _context.SaveChangesAsync();
     }
 }

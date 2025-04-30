@@ -4,7 +4,7 @@ namespace Library.Domain.Entities;
 
 public class ReaderInfo
 {
-    public int Id { get; set; } // NOTE: Dal jsem to tu protože nešla udělat migrace bez toho
+    public int Id { get; set; } // Dal jsem to tu protože nešla udělat migrace bez toho
     
     public int UserId { get; set; }
     public int CurrentCountOfBorrowedBooks { get; set; }
