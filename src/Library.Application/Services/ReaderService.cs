@@ -1,32 +1,43 @@
 ﻿using Library.Application.Interfaces;
 using Library.Domain.Entities;
+using Library.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Services;
 
 public class ReaderService : IReaderService
 {
+    private readonly DatabaseContext _context;
+    
+    public ReaderService(DatabaseContext context)
+    {
+        _context = context;
+    }
+    
     public async Task<User> GetUserWithId(int id)
     {
-        throw new NotImplementedException();
+        return await _context.Readers.FirstAsync(user => user.Id == id);
     }
 
     public async Task<User> GetUserWithName(string name)
     {
-        throw new NotImplementedException();
+        return await _context.Readers.FirstAsync(user => user.FullName == name);
     }
 
-    public Task RemoveReader(User user)
+    public async Task RemoveReader(User user)
     {
-        throw new NotImplementedException();
+        _context.Remove(user);
+
+        await _context.SaveChangesAsync();
     }
 
-    public Task<List<User>> GetAllReaders()
+    public async Task<List<User>> GetAllReaders()
     {
-        throw new NotImplementedException();
+        return await _context.Readers.ToListAsync();
     }
 
-    public Task AddReader(User user)
+    public async Task AddReader(User user)
     {
-        throw new NotImplementedException();
+        await _context.Readers.AddAsync(user);
     }
 }

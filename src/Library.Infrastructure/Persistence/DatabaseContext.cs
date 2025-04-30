@@ -11,6 +11,7 @@ namespace Library.Infrastructure.Persistence
     public class DatabaseContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
+        public DbSet<User> Readers { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
