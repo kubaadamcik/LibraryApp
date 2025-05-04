@@ -9,7 +9,7 @@ public class User
     public string FullName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
     
-    public int ReadInfoId { get; set; }
-    [ForeignKey("ReadInfoId")]
-    public virtual ReaderInfo? ReaderInfo { get; set; }
+    //public int ReadInfoId { get; set; }
+    //[ForeignKey("ReadInfoId")]
+    //public virtual ReaderInfo? ReaderInfo { get; set; }
 }

@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.Application.Interfaces;
+using ZaverecnyProjekt.View.Windows;
 
 namespace ZaverecnyProjekt;
 
@@ -16,8 +18,19 @@ namespace ZaverecnyProjekt;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    private IReaderService _readerService { get; set; }
+
+    public MainWindow(IReaderService readerService)
     {
         InitializeComponent();
+
+        _readerService = readerService;
+    }
+
+    private void RegisterUser(object sender, RoutedEventArgs e)
+    {
+        ReaderManagement readerWindow = new ReaderManagement(_readerService);
+
+        readerWindow.Show();
     }
 }

@@ -9,7 +9,7 @@ public class DatabaseContextFactory : IDesignTimeDbContextFactory<DatabaseContex
     {
         var optionsBuilder = new DbContextOptionsBuilder<DatabaseContext>();
         string dbPath = DatabaseConfig.GetDatabasePath();
-        optionsBuilder.UseSqlite($"Data Source={dbPath}");
+        optionsBuilder.UseSqlite($"Data Source=library.db");
         return new DatabaseContext(optionsBuilder.Options);
     }
 }

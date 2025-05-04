@@ -25,7 +25,7 @@
             <Button Content="Vypůjčit knihu" FontSize="16" Margin="10" />
             <Button Content="Vrátit knihu" FontSize="16" Margin="10"/>
             <Button Content="Zobrazit knihy" FontSize="16" Margin="10"/>
-            <Button Content="Registrovat uživatele" FontSize="16" Margin="10"/>
+            <Button Content="Registrovat uživatele" FontSize="16" Margin="10" Click="RegisterUser"/>
             <Button Content="Spravovat uživatele" FontSize="16" Margin="10"/>
             <Button Content="Nastavení" FontSize="16" Margin="10"/>
         </UniformGrid>

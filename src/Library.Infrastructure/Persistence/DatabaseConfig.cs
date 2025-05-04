@@ -21,7 +21,9 @@ namespace Library.Infrastructure.Persistence
             Directory.CreateDirectory(persistenceFolder);
             
             // Return the full path to the database file
-            return Path.Combine(persistenceFolder, "library.db");
+            //return Path.Combine(persistenceFolder, "library.db");
+
+            return "library.db";
         }
     }
 }

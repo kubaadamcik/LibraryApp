@@ -25,9 +25,13 @@
         
         <Label HorizontalAlignment="Right" VerticalAlignment="Center" Margin="20">Jméno čtenáře: </Label>
         <TextBox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="200" Height="30"
-                 x:Name="TbReaderName" GotFocus="TbReaderName_OnGotFocus"></TextBox>
+                 x:Name="TbReaderName" GotFocus="RemovePlaceholder"></TextBox>
         
         <Button Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Padding="10" Content="Uložit čtenáře" Click="AddReader"></Button>
+
+        <ListBox Grid.Row="1" Grid.RowSpan="2" Grid.Column="1" x:Name="LbReaders" SelectionChanged="ShowReaderInfo"></ListBox>
+
+        <ListView Grid.Column="3" Grid.Row="1" Grid.RowSpan="2" x:Name="LvReaderInfo"></ListView>
     </Grid>
 </Window>
