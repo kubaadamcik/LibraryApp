@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Library.Application.Interfaces;
-using ZaverecnyProjekt.View.Windows;
+using ZaverecnyProjekt.View.Pages;
 
 namespace ZaverecnyProjekt;
 
@@ -25,12 +25,8 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         _readerService = readerService;
+
+        MainFrame.Navigate(new MainPage(_readerService));
     }
 
-    private void RegisterUser(object sender, RoutedEventArgs e)
-    {
-        ReaderManagement readerWindow = new ReaderManagement(_readerService);
-
-        readerWindow.Show();
-    }
 }

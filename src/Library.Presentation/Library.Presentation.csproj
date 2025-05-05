@@ -29,4 +29,8 @@
       <ProjectReference Include="..\Library.Infrastructure\Library.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="View\UserControls\" />
+    </ItemGroup>
+
 </Project>

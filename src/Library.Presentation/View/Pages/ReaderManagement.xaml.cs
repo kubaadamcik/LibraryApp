@@ -1,12 +1,11 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using Library.Application.Interfaces;
-using Library.Application.Services;
 using Library.Domain.Entities;
 
-namespace ZaverecnyProjekt.View.Windows;
+namespace ZaverecnyProjekt.View.Pages;
 
-public partial class ReaderManagement : Window
+public partial class ReaderManagement : Page
 {
     private IReaderService _readerService;
     private List<User> _readers { get; set; }
@@ -39,9 +38,9 @@ public partial class ReaderManagement : Window
     {
         if (string.IsNullOrEmpty(TbReaderName.Text))
             return;
-        
+
         User user = new User() {FullName = TbReaderName.Text, Email = "pavelnovak@gmail.com"};
-        
+
         await _readerService.AddReader(user);
 
         await GetAllReaders();

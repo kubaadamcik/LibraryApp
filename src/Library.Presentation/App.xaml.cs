@@ -8,7 +8,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Library.Infrastructure;
 using Library.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
-using ZaverecnyProjekt.View.Windows;
 
 namespace ZaverecnyProjekt;
 
