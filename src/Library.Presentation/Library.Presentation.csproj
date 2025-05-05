@@ -30,7 +30,18 @@
     </ItemGroup>
 
     <ItemGroup>
+      <Folder Include="Resources\" />
       <Folder Include="View\UserControls\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="View\Images\GoBack.png" />
+      <None Remove="View\Images\GoForward.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Resources\Images\GoBack.png" />
+      <Resource Include="Resources\Images\GoForward.png" />
     </ItemGroup>
 
 </Project>

@@ -66,4 +66,9 @@ public partial class ReaderManagement : Page
         LvReaderInfo.Items.Add(reader.FullName);
         LvReaderInfo.Items.Add(reader.Email);
     }
+
+    private void NavigateBack(object sender, RoutedEventArgs e)
+    {
+        NavigationService.GoBack();
+    }
 }
