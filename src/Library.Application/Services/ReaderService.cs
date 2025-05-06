@@ -26,7 +26,7 @@ public class ReaderService : IReaderService
 
     public async Task RemoveReader(User user)
     {
-        _context.Remove(user);
+        _context.Readers.Remove(user);
 
         await _context.SaveChangesAsync();
     }
@@ -36,10 +36,14 @@ public class ReaderService : IReaderService
         return await _context.Readers.ToListAsync();
     }
 
-    public async Task AddReader(User user)
+    public async Task<bool> AddReader(User user)
     {
+        if (await _context.Readers.AnyAsync(r => r.Email == user.Email)) return false;
+
         await _context.Readers.AddAsync(user);
 
         await _context.SaveChangesAsync();
+
+        return true;
     }
 }

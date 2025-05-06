@@ -36,12 +36,15 @@ public partial class ReaderManagement : Page
 
     private async void AddReader(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrEmpty(TbReaderName.Text))
+        if (string.IsNullOrEmpty(TbReaderName.Text) || string.IsNullOrEmpty(TbReaderEmail.Text))
             return;
 
-        User user = new User() {FullName = TbReaderName.Text, Email = "pavelnovak@gmail.com"};
+        User user = new User() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text};
 
-        await _readerService.AddReader(user);
+        if (!await _readerService.AddReader(user))
+        {
+            MessageBox.Show("Uživatel se nevytvořil", "Chyba", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
 
         await GetAllReaders();
     }
