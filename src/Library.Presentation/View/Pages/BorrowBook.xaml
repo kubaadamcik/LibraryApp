@@ -1,0 +1,44 @@
+﻿<Page x:Class="ZaverecnyProjekt.View.Pages.BorrowBook"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
+      mc:Ignorable="d"
+      Title="BorrowBook" Height="450" Width="800">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="4*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Label HorizontalAlignment="Right" VerticalAlignment="Center"
+                   Content="Farma zvířat..." Opacity="0.5" x:Name="lbl_searchPlaceholder" Width="200" Height="30"></Label>
+
+            <TextBox VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" Width="200" Height="30" HorizontalContentAlignment="Left"
+                     x:Name="tb_searchBox" GotFocus="RemoveSearchPlaceholder"></TextBox>
+
+            <Button Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Najít" Height="30" Padding="5, 0, 5, 0" FontSize="11"></Button>
+        </Grid>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical">
+            <Button Content="Detektivky" Padding="0, 5, 0, 5"></Button>
+            <Button Content="Romány" Padding="0, 5, 0, 5"></Button>
+            <Button Content="Drama" Padding="0, 5, 0, 5"></Button>
+            <Button Content="Pohádky" Padding="0, 5, 0, 5"></Button>
+        </StackPanel>
+    </Grid>
+</Page>

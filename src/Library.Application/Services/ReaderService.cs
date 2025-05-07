@@ -5,44 +5,53 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Services;
 
-public class ReaderService : IReaderService
+public class ReaderService(DatabaseContext context) : IReaderService
 {
-    private readonly DatabaseContext _context;
-    
-    public ReaderService(DatabaseContext context)
-    {
-        _context = context;
-    }
-    
+    public event Func<Task> ContextChanged;
+
     public async Task<User> GetUserWithId(int id)
     {
-        return await _context.Readers.FirstAsync(user => user.Id == id);
+        return await context.Readers.FirstAsync(user => user.Id == id);
     }
 
     public async Task<User> GetUserWithName(string name)
     {
-        return await _context.Readers.FirstAsync(user => user.FullName == name);
+        return await context.Readers.FirstAsync(user => user.FullName == name);
     }
 
     public async Task RemoveReader(User user)
     {
-        _context.Readers.Remove(user);
+        context.Readers.Remove(user);
 
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
+
+        ContextChanged.Invoke();
+    }
+
+    public async Task BorrowBook()
+    {
+        throw new NotImplementedException();
+    }
+
+    public async Task ReturnBook()
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<List<User>> GetAllReaders()
     {
-        return await _context.Readers.ToListAsync();
+        return await context.Readers.Include(r => r.ReaderInfo).ToListAsync();
     }
 
     public async Task<bool> AddReader(User user)
     {
-        if (await _context.Readers.AnyAsync(r => r.Email == user.Email)) return false;
+        if (await context.Readers.AnyAsync(r => r.Email == user.Email)) return false;
 
-        await _context.Readers.AddAsync(user);
+        await context.Readers.AddAsync(user);
 
-        await _context.SaveChangesAsync();
+        await context.SaveChangesAsync();
+
+        ContextChanged.Invoke();
 
         return true;
     }

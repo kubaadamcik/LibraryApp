@@ -21,6 +21,11 @@ namespace Library.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<User>()
+                .HasOne(u => u.ReaderInfo)
+                .WithOne(r => r.User)
+                .HasForeignKey<ReaderInfo>(r => r.UserId);
         }
     }
 }

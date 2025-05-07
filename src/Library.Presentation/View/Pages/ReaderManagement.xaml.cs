@@ -10,16 +10,27 @@ public partial class ReaderManagement : Page
     private IReaderService _readerService;
     private List<User> _readers { get; set; }
 
+
     public ReaderManagement(IReaderService readerService)
     {
         InitializeComponent();
 
         _readerService = readerService;
 
-        TbReaderName.Text = "Pavel Novák";
-        TbReaderName.Opacity = 0.5;
 
         GetAllReaders();
+
+        _readerService.ContextChanged += GetAllReaders;
+        Loaded += OnLoaded;
+    }
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        if (Window.GetWindow(this) is Window window)
+        {
+            window.Height = this.Height;
+            window.Width = this.Width;
+        }
     }
 
     private async Task GetAllReaders()
@@ -39,7 +50,7 @@ public partial class ReaderManagement : Page
         if (string.IsNullOrEmpty(TbReaderName.Text) || string.IsNullOrEmpty(TbReaderEmail.Text))
             return;
 
-        User user = new User() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text};
+        User user = new User() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text, ReaderInfo = new ReaderInfo()};
 
         if (!await _readerService.AddReader(user))
         {
@@ -53,11 +64,15 @@ public partial class ReaderManagement : Page
     {
         TbReaderName.Text = string.Empty;
         TbReaderName.Opacity = 1;
+
     }
 
     private void ShowReaderInfo(object sender, SelectionChangedEventArgs e)
     {
         LvReaderInfo.Items.Clear();
+
+        btn_removeReader.Visibility = Visibility.Visible;
+        btn_showBorrowedBooks.Visibility = Visibility.Visible;
 
         ListBox lb = sender as ListBox;
 
@@ -65,13 +80,19 @@ public partial class ReaderManagement : Page
 
         User reader = _readers[lb.SelectedIndex];
 
-        LvReaderInfo.Items.Add(reader.Id);
-        LvReaderInfo.Items.Add(reader.FullName);
-        LvReaderInfo.Items.Add(reader.Email);
+        LvReaderInfo.Items.Add($"Id čtenáře: {reader.Id}");
+        LvReaderInfo.Items.Add($"Jméno: {reader.FullName}");
+        LvReaderInfo.Items.Add($"Emailová adresa: {reader.Email}");
+        LvReaderInfo.Items.Add($"Počet půjčených knih: {reader.ReaderInfo.BorrowedBooksCount}");
     }
 
     private void NavigateBack(object sender, RoutedEventArgs e)
     {
         NavigationService.GoBack();
+    }
+
+    private void RemoveReader(object sender, RoutedEventArgs e)
+    {
+        _readerService.RemoveReader(_readers[LbReaders.SelectedIndex]);
     }
 }

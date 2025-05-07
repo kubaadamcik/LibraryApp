@@ -13,6 +13,17 @@ public partial class MainPage : Page
         InitializeComponent();
 
         _readerService = readerService;
+
+        Loaded += OnLoaded;
+    }
+
+    private void OnLoaded(object sender, RoutedEventArgs e)
+    {
+        if (Window.GetWindow(this) is Window window)
+        {
+            window.Height = this.Height;
+            window.Width = this.Width;
+        }
     }
 
     private void RegisterUser(object sender, RoutedEventArgs e)
