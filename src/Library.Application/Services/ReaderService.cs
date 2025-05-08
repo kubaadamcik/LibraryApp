@@ -9,45 +9,35 @@ public class ReaderService(DatabaseContext context) : IReaderService
 {
     public event Func<Task> ContextChanged;
 
-    public async Task<User> GetUserWithId(int id)
+    public async Task<Reader> GetUserWithId(int id)
     {
         return await context.Readers.FirstAsync(user => user.Id == id);
     }
 
-    public async Task<User> GetUserWithName(string name)
+    public async Task<Reader> GetUserWithName(string name)
     {
         return await context.Readers.FirstAsync(user => user.FullName == name);
     }
 
-    public async Task RemoveReader(User user)
+    public async Task RemoveReader(Reader reader)
     {
-        context.Readers.Remove(user);
+        context.Readers.Remove(reader);
 
         await context.SaveChangesAsync();
 
         ContextChanged.Invoke();
     }
 
-    public async Task BorrowBook()
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task ReturnBook()
-    {
-        throw new NotImplementedException();
-    }
-
-    public async Task<List<User>> GetAllReaders()
+    public async Task<List<Reader>> GetAllReaders()
     {
         return await context.Readers.Include(r => r.ReaderInfo).ToListAsync();
     }
 
-    public async Task<bool> AddReader(User user)
+    public async Task<bool> AddReader(Reader reader)
     {
-        if (await context.Readers.AnyAsync(r => r.Email == user.Email)) return false;
+        if (await context.Readers.AnyAsync(r => r.Email == reader.Email)) return false;
 
-        await context.Readers.AddAsync(user);
+        await context.Readers.AddAsync(reader);
 
         await context.SaveChangesAsync();
 

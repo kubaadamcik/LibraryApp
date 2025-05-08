@@ -10,5 +10,5 @@ public class ReaderInfo
     public int BorrowedBooksCount { get; set; }
 
     public int UserId { get; set; }
-    public virtual User User { get; set; }
+    public virtual Reader Reader { get; set; }
 }

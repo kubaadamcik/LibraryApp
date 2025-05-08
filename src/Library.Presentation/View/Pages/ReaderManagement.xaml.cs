@@ -8,7 +8,7 @@ namespace ZaverecnyProjekt.View.Pages;
 public partial class ReaderManagement : Page
 {
     private IReaderService _readerService;
-    private List<User> _readers { get; set; }
+    private List<Reader> _readers { get; set; }
 
 
     public ReaderManagement(IReaderService readerService)
@@ -50,9 +50,9 @@ public partial class ReaderManagement : Page
         if (string.IsNullOrEmpty(TbReaderName.Text) || string.IsNullOrEmpty(TbReaderEmail.Text))
             return;
 
-        User user = new User() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text, ReaderInfo = new ReaderInfo()};
+        Reader reader = new Reader() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text, ReaderInfo = new ReaderInfo()};
 
-        if (!await _readerService.AddReader(user))
+        if (!await _readerService.AddReader(reader))
         {
             MessageBox.Show("Uživatel se nevytvořil", "Chyba", MessageBoxButton.OK, MessageBoxImage.Error);
         }
@@ -78,7 +78,7 @@ public partial class ReaderManagement : Page
 
         if (lb.SelectedIndex == -1) return;
 
-        User reader = _readers[lb.SelectedIndex];
+        Reader reader = _readers[lb.SelectedIndex];
 
         LvReaderInfo.Items.Add($"Id čtenáře: {reader.Id}");
         LvReaderInfo.Items.Add($"Jméno: {reader.FullName}");

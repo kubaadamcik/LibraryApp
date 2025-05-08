@@ -1,13 +1,6 @@
-using System.ComponentModel.DataAnnotations.Schema;
-using Library.Domain.ValueObjects;
-
-namespace Library.Domain.Entities;
+﻿namespace Library.Domain.Entities;
 
 public class User
-{ 
-    public int Id { get; set; }
-    public string FullName { get; set; } = string.Empty;
-    public string Email { get; set; } = string.Empty;
-
-    public virtual ReaderInfo? ReaderInfo { get; set; }
+{
+    
 }

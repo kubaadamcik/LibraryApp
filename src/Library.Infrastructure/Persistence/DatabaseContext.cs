@@ -11,7 +11,7 @@ namespace Library.Infrastructure.Persistence
     public class DatabaseContext : DbContext
     {
         public DbSet<Book> Books { get; set; }
-        public DbSet<User> Readers { get; set; }
+        public DbSet<Reader> Readers { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         {
@@ -22,9 +22,9 @@ namespace Library.Infrastructure.Persistence
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<Reader>()
                 .HasOne(u => u.ReaderInfo)
-                .WithOne(r => r.User)
+                .WithOne(r => r.Reader)
                 .HasForeignKey<ReaderInfo>(r => r.UserId);
         }
     }

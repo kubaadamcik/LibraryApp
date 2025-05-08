@@ -5,11 +5,10 @@ namespace Library.Application.Interfaces;
 public interface IReaderService
 {
     public event Func<Task> ContextChanged;
-    public Task<User> GetUserWithId(int id);
-    public Task<User> GetUserWithName(string name);
-    public Task<bool> AddReader(User user);
-    public Task<List<User>> GetAllReaders();
-    public Task RemoveReader(User user);
-    public Task BorrowBook();
-    public Task ReturnBook();
+    public Task<Reader> GetUserWithId(int id);
+    public Task<Reader> GetUserWithName(string name);
+    public Task<bool> AddReader(Reader reader);
+    public Task<List<Reader>> GetAllReaders();
+    public Task RemoveReader(Reader reader);
+
 }
