@@ -30,4 +30,9 @@ public partial class MainPage : Page
     {
         NavigationService.Navigate(new ReaderManagement(_readerService));
     }
+
+    private void BorrowBook(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new BorrowBook(_readerService));
+    }
 }
