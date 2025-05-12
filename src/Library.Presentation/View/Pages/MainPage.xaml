@@ -21,12 +21,19 @@
                Grid.Row="0"/>
 
     <UniformGrid Rows="2" Columns="3" Margin="40" Grid.Row="1">
-        <Button Content="Vypůjčit knihu" FontSize="16" Margin="10" Click="BorrowBook"/>
-        <Button Content="Vrátit knihu" FontSize="16" Margin="10"/>
-        <Button Content="Zobrazit knihy" FontSize="16" Margin="10"/>
-        <Button Content="Registrovat uživatele" FontSize="16" Margin="10" Click="RegisterUser"/>
-        <Button Content="Spravovat uživatele" FontSize="16" Margin="10"/>
-        <Button Content="Nastavení" FontSize="16" Margin="10"/>
+        <Button Content="Vypůjčit knihu" 
+                FontSize="16" 
+                Margin="10" 
+                Click="BorrowBook" 
+                Cursor="Hand"
+                <Border Background="#e0e0e0" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"/>
+        
+                
+        <Button Content="Vrátit knihu" FontSize="16" Margin="10" Click="ReturnBook" Cursor="Hand"/>
+        <Button Content="Zobrazit knihy" FontSize="16" Margin="10" Click="ShowBooks" Cursor="Hand"/>
+        <Button Content="Registrovat uživatele" FontSize="16" Margin="10" Click="ManageReaders" Cursor="Hand"/>
+        <Button Content="Spravovat uživatele" FontSize="16" Margin="10" Click="ManageUsers" Cursor="Hand"/>
+        <Button Content="Nastavení" FontSize="16" Margin="10" Click="Settings" Cursor="Hand"/>
     </UniformGrid>
 
     <StackPanel Orientation="Horizontal" Margin="20" Grid.Row="2" HorizontalAlignment="Center">
