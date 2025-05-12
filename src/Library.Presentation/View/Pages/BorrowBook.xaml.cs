@@ -6,23 +6,19 @@ namespace ZaverecnyProjekt.View.Pages;
 
 public partial class BorrowBook : Page
 {
-    public IReaderService _readerService { get; set; }
-    public BorrowBook(IReaderService readerService)
+    private IBookService _bookService;
+    public BorrowBook(IBookService bookService)
     {
         InitializeComponent();
 
-        _readerService = readerService;
+        _bookService = bookService;
 
         Loaded += OnLoaded;
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        if (Window.GetWindow(this) is Window window)
-        {
-            window.Height = this.Height;
-            window.Width = this.Width;
-        }
+
     }
 
     private void RemoveSearchPlaceholder(object sender, RoutedEventArgs e)
@@ -33,5 +29,10 @@ public partial class BorrowBook : Page
     private void NavigateBack(object sender, RoutedEventArgs e)
     {
         NavigationService.GoBack();
+    }
+
+    private void SelectReader(object sender, RoutedEventArgs e)
+    {
+        throw new NotImplementedException();
     }
 }

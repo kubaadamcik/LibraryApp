@@ -31,7 +31,6 @@
 
     <ItemGroup>
       <Folder Include="Resources\" />
-      <Folder Include="View\UserControls\" />
     </ItemGroup>
 
     <ItemGroup>

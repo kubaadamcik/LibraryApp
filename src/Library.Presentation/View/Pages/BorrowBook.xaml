@@ -49,5 +49,6 @@
             </DataGrid.Columns>
         </DataGrid>
 
+        <Button Grid.Row="2" Grid.Column="2" Content="Pokračovat" Click="SelectReader"></Button>
     </Grid>
 </Page>

@@ -8,13 +8,15 @@ namespace ZaverecnyProjekt.View.Pages;
 public partial class MainPage : Page
 {
     private IReaderService _readerService { get; set; }
-    public MainPage(IReaderService readerService)
+    private IBookService _bookService { get; set; }
+    public MainPage(IReaderService readerService, IBookService bookService)
     {
         InitializeComponent();
 
         _readerService = readerService;
+        _bookService = bookService;
 
-        Loaded += OnLoaded;
+        //Loaded += OnLoaded;
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
@@ -33,7 +35,7 @@ public partial class MainPage : Page
 
     private void BorrowBook(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new BorrowBook(_readerService));
+        NavigationService.Navigate(new BorrowBook(_bookService));
     }
     
     private void ReturnBook(object sender, RoutedEventArgs e)
