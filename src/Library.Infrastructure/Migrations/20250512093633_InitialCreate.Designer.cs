@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Library.Infrastructure.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20250507185433_UpdateUser")]
-    partial class UpdateUser
+    [Migration("20250512093633_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,9 +39,31 @@ namespace Library.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Year")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("Library.Domain.Entities.Reader", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Readers");
                 });
 
             modelBuilder.Entity("Library.Domain.Entities.ReaderInfo", b =>
@@ -61,54 +83,25 @@ namespace Library.Infrastructure.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId")
+                        .IsUnique();
 
                     b.ToTable("ReaderInfo");
                 });
 
-            modelBuilder.Entity("Library.Domain.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<int>("ReadInfoId")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ReadInfoId");
-
-                    b.ToTable("Readers");
-                });
-
             modelBuilder.Entity("Library.Domain.Entities.ReaderInfo", b =>
                 {
-                    b.HasOne("Library.Domain.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId")
+                    b.HasOne("Library.Domain.Entities.Reader", "Reader")
+                        .WithOne("ReaderInfo")
+                        .HasForeignKey("Library.Domain.Entities.ReaderInfo", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Reader");
                 });
 
-            modelBuilder.Entity("Library.Domain.Entities.User", b =>
+            modelBuilder.Entity("Library.Domain.Entities.Reader", b =>
                 {
-                    b.HasOne("Library.Domain.Entities.ReaderInfo", "ReaderInfo")
-                        .WithMany()
-                        .HasForeignKey("ReadInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("ReaderInfo");
                 });
 #pragma warning restore 612, 618

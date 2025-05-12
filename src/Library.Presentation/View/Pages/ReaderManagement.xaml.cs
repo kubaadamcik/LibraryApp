@@ -18,7 +18,6 @@ public partial class ReaderManagement : Page
         _readerService = readerService;
 
 
-        GetAllReaders();
 
         _readerService.ContextChanged += GetAllReaders;
         Loaded += OnLoaded;
@@ -26,11 +25,7 @@ public partial class ReaderManagement : Page
 
     private void OnLoaded(object sender, RoutedEventArgs e)
     {
-        if (Window.GetWindow(this) is Window window)
-        {
-            window.Height = this.Height;
-            window.Width = this.Width;
-        }
+        GetAllReaders();
     }
 
     private async Task GetAllReaders()

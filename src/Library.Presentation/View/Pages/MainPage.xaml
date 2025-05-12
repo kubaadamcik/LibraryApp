@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="MainPage" Height="800" Width="600">
+      Title="MainPage">
 <Grid>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
