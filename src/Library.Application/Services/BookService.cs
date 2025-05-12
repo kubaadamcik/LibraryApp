@@ -34,15 +34,17 @@ public class BookService : IBookService
         await _context.SaveChangesAsync();
     }
 
-    public async Task RemoveBookWithId(int id)
+    public async Task<string?> RemoveBookWithId(int id)
     {
         Book? book = await GetBookWithId(id);
 
-        if (book is null) return;
+        if (book is null) return "Kniha nebyla nalezena";
 
         _context.Books.Remove(book);
 
         await _context.SaveChangesAsync();
+
+        return null;
     }
 
     public async Task BorrowBook()

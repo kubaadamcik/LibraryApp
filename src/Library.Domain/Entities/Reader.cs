@@ -9,5 +9,5 @@ public class Reader
     public string FullName { get; set; } = string.Empty;
     public string Email { get; set; } = string.Empty;
 
-    public virtual ReaderInfo? ReaderInfo { get; set; }
+    public virtual ReaderInfo ReaderInfo { get; set; }
 }
