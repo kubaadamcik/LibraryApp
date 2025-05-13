@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="MainPage">
+      Title="MainPage" Background="#d6d6d6">
 <Grid>
     <Grid.RowDefinitions>
         <RowDefinition Height="Auto"/>
@@ -25,9 +25,21 @@
                 FontSize="16" 
                 Margin="10" 
                 Click="BorrowBook" 
-                Cursor="Hand"
-                <Border Background="#e0e0e0" CornerRadius="5" BorderBrush="Gray" BorderThickness="1"/>
-        
+                Cursor="Hand">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="White"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Setter Property="BorderBrush" Value="#b5b3b3"/>
+                    <Setter Property="BorderThickness" Value="2"/>
+                    <Setter.Value>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background=""></Border>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Style>
+            </Button.Style>
+        </Button>
                 
         <Button Content="Vrátit knihu" FontSize="16" Margin="10" Click="ReturnBook" Cursor="Hand"/>
         <Button Content="Zobrazit knihy" FontSize="16" Margin="10" Click="ShowBooks" Cursor="Hand"/>
