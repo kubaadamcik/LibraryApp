@@ -37,7 +37,7 @@ public partial class App : Application
 
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
-        services.AddTransient<MainWindow>();
+        services.AddSingleton<MainWindow>();
 
         _serviceProvider = services.BuildServiceProvider();
 

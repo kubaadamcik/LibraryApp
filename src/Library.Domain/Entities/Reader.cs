@@ -10,4 +10,5 @@ public class Reader
     public string Email { get; set; } = string.Empty;
 
     public virtual ReaderInfo ReaderInfo { get; set; }
+    public virtual User User { get; set; }
 }
