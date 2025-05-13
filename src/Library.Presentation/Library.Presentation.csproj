@@ -16,6 +16,10 @@
         <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       </PackageReference>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.4" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.4">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
     </ItemGroup>
 
@@ -23,6 +27,20 @@
       <ProjectReference Include="..\Library.Application\Library.Application.csproj" />
       <ProjectReference Include="..\Library.Domain\Library.Domain.csproj" />
       <ProjectReference Include="..\Library.Infrastructure\Library.Infrastructure.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Resources\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="View\Images\GoBack.png" />
+      <None Remove="View\Images\GoForward.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Resources\Images\GoBack.png" />
+      <Resource Include="Resources\Images\GoForward.png" />
     </ItemGroup>
 
 </Project>

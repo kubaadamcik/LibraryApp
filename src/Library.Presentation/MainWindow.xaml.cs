@@ -8,6 +8,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Library.Application.Interfaces;
+using ZaverecnyProjekt.View.Pages;
 
 namespace ZaverecnyProjekt;
 
@@ -16,24 +18,17 @@ namespace ZaverecnyProjekt;
 /// </summary>
 public partial class MainWindow : Window
 {
-    public MainWindow()
+    private IReaderService _readerService { get; set; }
+    private IBookService _bookService { get; set; }
+
+    public MainWindow(IReaderService readerService, IBookService bookService)
     {
         InitializeComponent();
-    }
-    
-    private void CloseApp_Click(object sender, RoutedEventArgs e)
-    {
-        this.Close();
-    }
-    
-    private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-    {
-        if (e.ButtonState == MouseButtonState.Pressed)
-            this.DragMove();
+
+        _readerService = readerService;
+        _bookService = bookService;
+
+        MainFrame.Navigate(new MainPage(_readerService, _bookService));
     }
 
-    private void MinimalizeApp_Click(object sender, RoutedEventArgs e)
-    {
-        this.WindowState = WindowState.Minimized;
-    }
 }
