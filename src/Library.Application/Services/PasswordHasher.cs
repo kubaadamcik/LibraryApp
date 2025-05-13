@@ -14,7 +14,6 @@ public class PasswordHasher : IPasswordHasher
 
         }
 
-
         throw new NotImplementedException();
     }
 
