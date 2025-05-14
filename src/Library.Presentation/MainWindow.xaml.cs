@@ -19,14 +19,16 @@ namespace ZaverecnyProjekt;
 public partial class MainWindow : Window
 {
     private IReaderService _readerService { get; set; }
+    private IBookService _bookService { get; set; }
 
-    public MainWindow(IReaderService readerService)
+    public MainWindow(IReaderService readerService, IBookService bookService)
     {
         InitializeComponent();
 
         _readerService = readerService;
+        _bookService = bookService;
 
-        MainFrame.Navigate(new MainPage(_readerService));
+        MainFrame.Navigate(new MainPage(_readerService, _bookService));
     }
 
 }

@@ -36,9 +36,31 @@ namespace Library.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("Year")
+                        .HasColumnType("INTEGER");
+
                     b.HasKey("Id");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("Library.Domain.Entities.Reader", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Readers");
                 });
 
             modelBuilder.Entity("Library.Domain.Entities.ReaderInfo", b =>
@@ -64,37 +86,18 @@ namespace Library.Infrastructure.Migrations
                     b.ToTable("ReaderInfo");
                 });
 
-            modelBuilder.Entity("Library.Domain.Entities.User", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("FullName")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Readers");
-                });
-
             modelBuilder.Entity("Library.Domain.Entities.ReaderInfo", b =>
                 {
-                    b.HasOne("Library.Domain.Entities.User", "User")
+                    b.HasOne("Library.Domain.Entities.Reader", "Reader")
                         .WithOne("ReaderInfo")
                         .HasForeignKey("Library.Domain.Entities.ReaderInfo", "UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("User");
+                    b.Navigation("Reader");
                 });
 
-            modelBuilder.Entity("Library.Domain.Entities.User", b =>
+            modelBuilder.Entity("Library.Domain.Entities.Reader", b =>
                 {
                     b.Navigation("ReaderInfo");
                 });

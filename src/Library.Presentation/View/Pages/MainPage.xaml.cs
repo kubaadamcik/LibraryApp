@@ -16,7 +16,7 @@ public partial class MainPage : Page
         _readerService = readerService;
         _bookService = bookService;
 
-        Loaded += OnLoaded;
+        //Loaded += OnLoaded;
     }
 
     private void OnLoaded(object sender, RoutedEventArgs e)
@@ -28,13 +28,43 @@ public partial class MainPage : Page
         }
     }
 
-    private void RegisterUser(object sender, RoutedEventArgs e)
+    private void ManageReaders(object sender, RoutedEventArgs e)
     {
         NavigationService.Navigate(new ReaderManagement(_readerService));
     }
 
     private void BorrowBook(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new BorrowBook(_readerService, _bookService));
+        NavigationService.Navigate(new BorrowBook(_bookService));
+    }
+    
+    private void ReturnBook(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new ReturnBook(_readerService));
+    }
+    
+    private void ShowBooks(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new ShowBooks(_readerService));
+    }
+    
+    private void ManageUsers(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new ManageUsers(_readerService));
+    }
+    
+    private void Settings(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new Settings(_readerService));
+    }
+    
+    private void ManageBorrows(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new ManageBorrows(_readerService));
+    }
+    
+    private void Settings(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new Settings(_readerService));
     }
 }

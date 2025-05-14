@@ -33,7 +33,11 @@ public partial class App : Application
 
         services.AddSingleton<IReaderService, ReaderService>();
 
-        services.AddTransient<MainWindow>();
+        services.AddSingleton<IBookService, BookService>();
+
+        services.AddSingleton<IPasswordHasher, PasswordHasher>();
+
+        services.AddSingleton<MainWindow>();
 
         _serviceProvider = services.BuildServiceProvider();
 
