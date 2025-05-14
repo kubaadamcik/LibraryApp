@@ -40,7 +40,7 @@
             <Button  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Najít" Height="30" Padding="5, 0, 5, 0" FontSize="11"></Button>
         </Grid>
 
-        <DataGrid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+        <DataGrid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" ItemsSource="{Binding Knihy}">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Název"></DataGridTextColumn>
                 <DataGridTextColumn Header="Autor"></DataGridTextColumn>
