@@ -53,7 +53,7 @@
         </UniformGrid>
 
         <StackPanel Orientation="Horizontal" Margin="20" Grid.Row="2" HorizontalAlignment="Center">
-            <Button Content="Správa výpůjček" FontSize="14" Margin="10" BorderThickness="0" Cursor="Hand" Click="" Style="{StaticResource RoundedButtonStyle}/>
+            <Button Content="Správa výpůjček" FontSize="14" Margin="10" BorderThickness="0" Cursor="Hand" Click="ManageBorrows" Style="{StaticResource RoundedButtonStyle}"/>
             <Button Content="Nápověda" FontSize="14" Margin="10" BorderThickness="0" Cursor="Hand"/>
         </StackPanel>
     </Grid>

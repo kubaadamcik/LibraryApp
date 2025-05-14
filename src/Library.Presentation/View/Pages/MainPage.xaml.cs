@@ -62,9 +62,4 @@ public partial class MainPage : Page
     {
         NavigationService.Navigate(new ManageBorrows(_readerService));
     }
-    
-    private void Settings(object sender, RoutedEventArgs e)
-    {
-        NavigationService.Navigate(new Settings(_readerService));
-    }
 }
