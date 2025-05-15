@@ -10,6 +10,5 @@ public class ReaderInfo
     public int BorrowedBooksCount { get; set; }
     public List<Book> BorrowedBooks { get; set; }
     public List<Book> CurrentBorrowedBooks { get; set; }
-    public int UserId { get; set; }
     public virtual Reader Reader { get; set; }
 }

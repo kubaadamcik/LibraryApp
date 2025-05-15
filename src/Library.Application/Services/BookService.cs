@@ -9,7 +9,6 @@ namespace Library.Application.Services;
 
 public class BookService : IBookService
 {
-    private IBookService _bookServiceImplementation;
     private DatabaseContext _context { get; set; }
 
     public BookService(DatabaseContext context)
@@ -48,18 +47,12 @@ public class BookService : IBookService
 
         return null;
     }
-
     
-    // TODO: Updating ReaderInfo fields: BorrowedBooks, CurrentBorrowedBooks and BorrowedBooksCount, BUT USING READER SERVICE!
     public async Task BorrowBook(int bookId)
     {
         var book = await GetBookWithId(bookId);
         
         if (book is null) return;
-        
-        // TODO: Add checking how many books are stored, before borrowing
-        // It can be done in service where BookService and ReadService will be used
-        if (book.Count < 1) return;
         
         book.Count--;
         
@@ -67,10 +60,16 @@ public class BookService : IBookService
         await _context.SaveChangesAsync();
     }
 
-    // With the same logic as in BorrowBook() complete ReturnBook() method
-    public async Task ReturnBook()
+    public async Task ReturnBook(int bookId)
     {
-        throw new NotImplementedException();
+        var book = await GetBookWithId(bookId);
+        
+        if (book is null) return;
+
+        book.Count++;
+
+        _context.Update(book);
+        await _context.SaveChangesAsync();
     }
 
     public async Task<List<Book>> SearchBooks (string prompt)
