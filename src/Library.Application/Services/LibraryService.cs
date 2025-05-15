@@ -5,7 +5,8 @@ namespace Library.Application.Services;
 
 public class LibraryService(Reader reader,
     IBookService bookService,
-    IReaderService readerService) : ILibraryService
+    IReaderService readerService,
+    IBookTransactionService transactionService) : ILibraryService
 {
     // TODO: Implement these methods
     public async Task<bool> BorrowBook(int bookId)
@@ -15,6 +16,7 @@ public class LibraryService(Reader reader,
         
         await bookService.BorrowBook(bookId);
         // TODO: Update  ReaderInfo
+        // TODO: Use BookTransactionService here
         
         return true;
     }
@@ -26,6 +28,7 @@ public class LibraryService(Reader reader,
         
         await bookService.ReturnBook(bookId);
         // TODO: Update  ReaderInfo
+        // TODO: Use BookTransactionService here
         
         return true;
     }

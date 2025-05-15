@@ -9,7 +9,6 @@ namespace Library.Application.Services;
 
 public class BookService : IBookService
 {
-    private IBookService _bookServiceImplementation;
     private DatabaseContext _context { get; set; }
 
     public BookService(DatabaseContext context)
@@ -48,9 +47,7 @@ public class BookService : IBookService
 
         return null;
     }
-
     
-    // TODO: Updating ReaderInfo fields: BorrowedBooks, CurrentBorrowedBooks and BorrowedBooksCount, BUT USING READER SERVICE!
     public async Task BorrowBook(int bookId)
     {
         var book = await GetBookWithId(bookId);
