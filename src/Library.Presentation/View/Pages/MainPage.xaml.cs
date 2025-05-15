@@ -53,13 +53,18 @@ public partial class MainPage : Page
         NavigationService.Navigate(new ManageUsers(_readerService));
     }
     
+    private void ManageBorrows(object sender, RoutedEventArgs e)
+    {
+        NavigationService.Navigate(new ManageBorrows(_readerService));
+    }
+    
     private void Settings(object sender, RoutedEventArgs e)
     {
         NavigationService.Navigate(new Settings(_readerService));
     }
-    
-    private void ManageBorrows(object sender, RoutedEventArgs e)
+
+    private void About(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new ManageBorrows(_readerService));
+        NavigationService.Navigate((new About(_readerService)));
     }
 }
