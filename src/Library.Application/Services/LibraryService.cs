@@ -3,16 +3,30 @@ using Library.Domain.Entities;
 
 namespace Library.Application.Services;
 
-public class LibraryService(Reader reader) : ILibraryService
+public class LibraryService(Reader reader,
+    IBookService bookService,
+    IReaderService readerService) : ILibraryService
 {
     // TODO: Implement these methods
-    public Task<bool> BorrowBook(int bookId)
+    public async Task<bool> BorrowBook(int bookId)
     {
-        throw new NotImplementedException();
+        var book = await bookService.GetBookWithId(bookId);
+        if (book is null || book.Count < 1) return false;
+        
+        await bookService.BorrowBook(bookId);
+        // TODO: Update  ReaderInfo
+        
+        return true;
     }
 
-    public Task<bool> ReturnBook(int bookId)
+    public async Task<bool> ReturnBook(int bookId)
     {
-        throw new NotImplementedException();
+        var book = await bookService.GetBookWithId(bookId);
+        if (book is null) return false;
+        
+        await bookService.ReturnBook(bookId);
+        // TODO: Update  ReaderInfo
+        
+        return true;
     }
 }
