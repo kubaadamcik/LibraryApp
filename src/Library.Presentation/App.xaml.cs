@@ -4,6 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using Library.Application.Interfaces;
 using Library.Application.Services;
+using Library.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection;
 using Library.Infrastructure;
 using Library.Infrastructure.Persistence;
@@ -29,11 +30,11 @@ public partial class App : Application
             options.UseSqlite($"Data Source=../../../../Library.Infrastructure/library.db");
         });
 
-        services.AddSingleton<ReaderService>();
-
-        services.AddSingleton<IReaderService, ReaderService>();
-
-        services.AddSingleton<IBookService, BookService>();
+        services.AddSingleton<Reader>();
+        
+        services.AddTransient<IReaderService, ReaderService>();
+        services.AddTransient<ILibraryService, LibraryService>();
+        services.AddTransient<IBookService, BookService>();
 
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
