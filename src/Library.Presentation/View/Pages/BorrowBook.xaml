@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
       Title="BorrowBook" d:DesignHeight="600" d:DesignWidth="800" Background="#e0e0e0">
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="4*"></ColumnDefinition>
@@ -50,6 +50,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="2" Grid.Column="2" Content="Pokračovat" Click="SelectReader" Background="White"></Button>
+        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                Padding="20" FontSize="15" Content="Pokračovat" Click="SelectReader" Background="White"></Button>
     </Grid>
 </Page>

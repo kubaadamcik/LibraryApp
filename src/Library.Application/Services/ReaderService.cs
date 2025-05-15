@@ -30,7 +30,7 @@ public class ReaderService(DatabaseContext context) : IReaderService
 
     public async Task<List<Reader>> GetAllReaders()
     {
-        return await context.Readers.Include(r => r.ReaderInfo).ToListAsync();
+        return await context.Readers.ToListAsync();
     }
 
     public async Task<bool> AddReader(Reader reader)

@@ -45,7 +45,7 @@ public partial class ReaderManagement : Page
         if (string.IsNullOrEmpty(TbReaderName.Text) || string.IsNullOrEmpty(TbReaderEmail.Text))
             return;
 
-        Reader reader = new Reader() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text, ReaderInfo = new ReaderInfo()};
+        Reader reader = new Reader() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text};
 
         if (!await _readerService.AddReader(reader))
         {
@@ -78,7 +78,6 @@ public partial class ReaderManagement : Page
         LvReaderInfo.Items.Add($"Id čtenáře: {reader.Id}");
         LvReaderInfo.Items.Add($"Jméno: {reader.FullName}");
         LvReaderInfo.Items.Add($"Emailová adresa: {reader.Email}");
-        LvReaderInfo.Items.Add($"Počet půjčených knih: {reader.ReaderInfo.BorrowedBooksCount}");
     }
 
     private void NavigateBack(object sender, RoutedEventArgs e)
