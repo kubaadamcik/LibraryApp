@@ -65,6 +65,6 @@ public partial class MainPage : Page
 
     private void About(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate((new About(_readerService)));
+        NavigationService.Navigate(new About(_readerService));
     }
 }

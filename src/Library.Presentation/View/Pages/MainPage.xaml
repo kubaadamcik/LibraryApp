@@ -42,7 +42,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="Vypůjčit knihu" FontSize="16"/>
+            <TextBlock Text="Vypůjčit knihu" FontSize="16" FontWeight="Bold"/>
         </Button>
 
         <Button Click="ReturnBook" Cursor="Hand" Margin="5" FontWeight="Medium">
@@ -63,7 +63,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="Vrátit knihu" FontSize="16"/>
+            <TextBlock Text="Vrátit knihu" FontSize="16" FontWeight="Bold"/>
         </Button>
 
         <Button Click="ShowBooks" Cursor="Hand" Margin="5" FontWeight="Medium">
@@ -84,7 +84,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="Zobrazit knihy" FontSize="16"/>
+            <TextBlock Text="Zobrazit knihy" FontSize="16" FontWeight="Bold"/>
         </Button>
 
         <Button Click="ManageReaders" Cursor="Hand" Margin="5" FontWeight="Medium">
@@ -105,7 +105,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="Registrovat uživatele" FontSize="16"/>
+            <TextBlock Text="Registrovat uživatele" FontSize="16" FontWeight="Bold"/>
         </Button>
 
         <Button Click="ManageUsers" Cursor="Hand" Margin="5" FontWeight="Medium">
@@ -126,7 +126,7 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="Spravovat uživatele" FontSize="16"/>
+            <TextBlock Text="Spravovat uživatele" FontSize="16" FontWeight="Bold"/>
         </Button>
 
         <Button Click="ManageBorrows" Cursor="Hand" Margin="5" FontWeight="Medium">
@@ -147,12 +147,12 @@
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="Spravovat knihy" FontSize="16"/>
+            <TextBlock Text="Spravovat knihy" FontSize="16" FontWeight="Bold"/>
         </Button>
     </UniformGrid>
 
     <!-- Spodní tlačítka -->
-    <StackPanel Orientation="Horizontal" Margin="0 0 0 20" Grid.Row="2" HorizontalAlignment="Center">
+    <StackPanel Orientation="Horizontal" Margin="0 0 0 10" Grid.Row="2" HorizontalAlignment="Center">
         <Button Click="Settings" Cursor="Hand">
             <Button.Template>
                 <ControlTemplate TargetType="Button">

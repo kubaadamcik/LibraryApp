@@ -5,29 +5,91 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="Settings" Background="#e0e0e0">
-    <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+      Title="Settings" Background="#e0e0e0" Width="600" Height="500">
 
+    <Page.Resources>
+        <!-- Styl pro CheckBox (zaoblený styl) -->
+        <Style x:Key="RoundedCheckBoxStyle" TargetType="CheckBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="CheckBox">
+                        <StackPanel Orientation="Horizontal" Margin="5">
+                            <Border Width="20" Height="20" CornerRadius="4" BorderBrush="Gray" BorderThickness="1" Background="White">
+                                <Path x:Name="CheckMark" Visibility="Collapsed"
+                                      Data="M 0 5 L 5 10 L 15 0"
+                                      Stroke="Green" StrokeThickness="2"/>
+                            </Border>
+                            <ContentPresenter Margin="10,0,0,0" VerticalAlignment="Center"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="CheckMark" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Styl pro tlačítka -->
+        <Style x:Key="RoundedButtonStyle" TargetType="Button">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="#b5b3b3"/>
+            <Setter Property="BorderThickness" Value="2"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" 
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="10" Padding="10,5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20">
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
+        <!-- Zpět tlačítko -->
+        <Grid Grid.Row="0" HorizontalAlignment="Left">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
-            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0.2" Background="Transparent"></Button>
+            <Button Width="50" Height="50" Click="NavigateBack"
+                    Opacity="0.2" Background="Transparent"/>
         </Grid>
 
-        <!-- Add your controls specific to the page below -->
+        <!-- Nastavení -->
+        <StackPanel Grid.Row="1" Margin="0,30,0,0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300">
 
+            <!-- Tmavý režim -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                <CheckBox x:Name="DarkModeToggle" Content="Tmavý režim"
+                          Style="{StaticResource RoundedCheckBoxStyle}"
+                          Checked="DarkModeToggle_Checked"
+                          Unchecked="DarkModeToggle_Unchecked"/>
+            </StackPanel>
+
+            <!-- Obnovit nastavení -->
+            <Button Content="Obnovit výchozí nastavení"
+                    Style="{StaticResource RoundedButtonStyle}"
+                    Click="ResetSettings_Click"/>
+
+            <!-- Odhlásit -->
+            <Button Content="Odhlásit uživatele"
+                    Style="{StaticResource RoundedButtonStyle}"/>
+
+            <!-- Vypnout aplikaci -->
+            <Button Content="Vypnout aplikaci"
+                    Style="{StaticResource RoundedButtonStyle}"
+                    Click="ExitApp_Click"/>
+        </StackPanel>
     </Grid>
 </Page>
