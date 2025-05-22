@@ -4,11 +4,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <!-- Základní barvy (světlý režim) -->
-            <SolidColorBrush x:Key="BackgroundBrush" Color="#DBDBDB"/> <!-- 219,219,219 -->
-            <SolidColorBrush x:Key="ForegroundBrush" Color="#000000"/> <!-- 0,0,0 -->
-            <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#D9D9D9"/> <!-- 217,217,217 -->
-            <SolidColorBrush x:Key="ButtonForegroundBrush" Color="#000000"/> <!-- 0,0,0 -->
-            <SolidColorBrush x:Key="ButtonBorderBrush" Color="#999999"/> <!-- použil jsem šedou podobnou ForegroundColor -->
+            <SolidColorBrush x:Key="BackgroundBrush" Color="#ebebeb"/>
+            <SolidColorBrush x:Key="ForegroundBrush" Color="#000000"/>
+            <SolidColorBrush x:Key="ButtonBackgroundBrush" Color="#D9D9D9"/>
+            <SolidColorBrush x:Key="ButtonForegroundBrush" Color="#000000"/>
+            <SolidColorBrush x:Key="ButtonBorderBrush" Color="#999999"/>
+            <SolidColorBrush x:Key="ButtonTriggerBrush" Color="#c4c4c4"></SolidColorBrush>
         
             <!-- Základní styl pro tlačítka -->
             <Style TargetType="Button">

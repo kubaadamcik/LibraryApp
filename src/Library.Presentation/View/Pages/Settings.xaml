@@ -61,10 +61,10 @@
         </Grid.RowDefinitions>
 
         <!-- Zpět tlačítko -->
-        <Grid Grid.Row="0" HorizontalAlignment="Left">
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
-            <Button Width="50" Height="50" Click="NavigateBack"
-                    Opacity="0.2" Background="Transparent"/>
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
+                    Click="NavigateBack" Opacity="0.2" Background="Transparent" Cursor="Hand"></Button>
         </Grid>
 
         <!-- Nastavení -->
@@ -74,29 +74,77 @@
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
                 <CheckBox x:Name="DarkModeToggle" Content="Tmavý režim"
                           Style="{StaticResource RoundedCheckBoxStyle}"
+                          Foreground="{DynamicResource ButtonForegroundBrush}"
+                          Cursor="Hand"
                           Checked="DarkModeToggle_Checked"
                           Unchecked="DarkModeToggle_Unchecked"/>
             </StackPanel>
 
             <!-- Obnovit nastavení -->
-            <Button Content="Obnovit výchozí nastavení"
-                    Style="{StaticResource RoundedButtonStyle}"
-                    Click="ResetSettings_Click"
-                    Background="{DynamicResource ButtonBackgroundBrush}"
-                    Foreground="{DynamicResource ButtonForegroundBrush}"/>
+            <Button Click="ResetSettings_Click" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{DynamicResource ButtonBackgroundBrush}"
+                                CornerRadius="20" 
+                                BorderBrush="Gray" 
+                                BorderThickness="1" 
+                                Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonTriggerBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="Resetovat nastavení" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            </Button>
 
             <!-- Odhlásit -->
-            <Button Content="Odhlásit uživatele"
-                    Style="{StaticResource RoundedButtonStyle}"
-                    Background="{DynamicResource ButtonBackgroundBrush}"
-                    Foreground="{DynamicResource ButtonForegroundBrush}"/>
+            <Button Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{DynamicResource ButtonBackgroundBrush}"
+                                CornerRadius="20" 
+                                BorderBrush="Gray" 
+                                BorderThickness="1" 
+                                Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonTriggerBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="Odhlásit uživatele" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            </Button>
 
             <!-- Vypnout aplikaci -->
-            <Button Content="Vypnout aplikaci"
-                    Style="{StaticResource RoundedButtonStyle}"
-                    Click="ExitApp_Click"
-                    Background="{DynamicResource ButtonBackgroundBrush}"
-                    Foreground="{DynamicResource ButtonForegroundBrush}"/>
+            <Button Click="ExitApp_Click" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border"
+                                Background="{DynamicResource ButtonBackgroundBrush}"
+                                CornerRadius="20" 
+                                BorderBrush="Gray" 
+                                BorderThickness="1" 
+                                Padding="10">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonTriggerBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Button.Template>
+                <TextBlock Text="Vypnout aplikaci" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+            </Button>
         </StackPanel>
     </Grid>
 </Page>
