@@ -5,7 +5,8 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="Settings" Background="#e0e0e0" Width="600" Height="500">
+      Title="Settings" Width="600" Height="500"
+      Background="{DynamicResource BackgroundColor}">
 
     <Page.Resources>
         <!-- Styl pro CheckBox (zaoblený styl) -->
@@ -63,7 +64,7 @@
         <Grid Grid.Row="0" HorizontalAlignment="Left">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button Width="50" Height="50" Click="NavigateBack"
-                    Opacity="0.2" Background="Transparent"/>
+                    Opacity="0.2" Background="{DynamicResource ButtonBackgroundBrush}"/>
         </Grid>
 
         <!-- Nastavení -->
@@ -80,16 +81,19 @@
             <!-- Obnovit nastavení -->
             <Button Content="Obnovit výchozí nastavení"
                     Style="{StaticResource RoundedButtonStyle}"
-                    Click="ResetSettings_Click"/>
+                    Click="ResetSettings_Click"
+                    Background="{DynamicResource ButtonBackgroundBrush}"/>
 
             <!-- Odhlásit -->
             <Button Content="Odhlásit uživatele"
-                    Style="{StaticResource RoundedButtonStyle}"/>
+                    Style="{StaticResource RoundedButtonStyle}"
+                    Background="{DynamicResource ButtonBackgroundBrush}"/>
 
             <!-- Vypnout aplikaci -->
             <Button Content="Vypnout aplikaci"
                     Style="{StaticResource RoundedButtonStyle}"
-                    Click="ExitApp_Click"/>
+                    Click="ExitApp_Click"
+                    Background="{DynamicResource ButtonBackgroundBrush}"/>
         </StackPanel>
     </Grid>
 </Page>

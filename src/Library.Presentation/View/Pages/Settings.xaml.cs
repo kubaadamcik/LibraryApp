@@ -28,18 +28,18 @@ namespace ZaverecnyProjekt.View.Pages
 
         private void DarkModeToggle_Checked(object sender, RoutedEventArgs e)
         {
-            this.Background = new SolidColorBrush(Color.FromRgb(45, 45, 48)); // Tmavý režim
+            ThemeManager.Instance.SetTheme(true);
         }
 
         private void DarkModeToggle_Unchecked(object sender, RoutedEventArgs e)
         {
-            this.Background = _originalBackground; // Světlý režim
+            ThemeManager.Instance.SetTheme(false);
         }
 
         private void ResetSettings_Click(object sender, RoutedEventArgs e)
         {
             DarkModeToggle.IsChecked = false;
-            this.Background = _originalBackground;
+            ThemeManager.Instance.SetTheme(false);
         }
 
 

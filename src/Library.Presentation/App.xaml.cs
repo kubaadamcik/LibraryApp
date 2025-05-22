@@ -22,6 +22,7 @@ public partial class App : Application
     protected override void OnStartup(StartupEventArgs e)
     {
         base.OnStartup(e);
+        ThemeManager.Instance.SetTheme(false);
 
         var services = new ServiceCollection();
         string dbPath = DatabaseConfig.GetDatabasePath();
@@ -39,7 +40,7 @@ public partial class App : Application
 
         services.AddSingleton<IPasswordHasher, PasswordHasher>();
 
-        services.AddSingleton<MainWindow>();
+        services.AddTransient<MainWindow>();
 
         _serviceProvider = services.BuildServiceProvider();
 

@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="BorrowBook" d:DesignHeight="500" d:DesignWidth="600" Background="#e0e0e0">
+      Title="BorrowBook" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundColor}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -37,7 +37,7 @@
             <TextBox VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" Width="200" Height="30" HorizontalContentAlignment="Left"
                      x:Name="tb_searchBox" GotFocus="RemoveSearchPlaceholder"></TextBox>
 
-            <Button  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Najít" Height="30" Padding="5, 0, 5, 0" FontSize="11" Background="White"
+            <Button  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Najít" Height="30" Padding="5, 0, 5, 0" FontSize="11" Background="{DynamicResource ButtonBackgroundBrush}"
                      Click="CreateBook"></Button>
         </Grid>
 
@@ -51,6 +51,6 @@
         </DataGrid>
 
         <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                Padding="10" FontSize="15" Content="Pokračovat" Click="SelectReader" Background="White"></Button>
+                Padding="10" FontSize="15" Content="Pokračovat" Click="SelectReader" Background="{DynamicResource ButtonBackgroundBrush}"></Button>
     </Grid>
 </Page>
