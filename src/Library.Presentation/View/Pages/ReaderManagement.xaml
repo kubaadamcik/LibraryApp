@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="ReaderManagement" Width="600" Height="500" Background="{DynamicResource BackgroundColor}">
+      Title="ReaderManagement" Width="600" Height="500" Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -22,7 +22,7 @@
     <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Background="#e3e3e3">
         <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
         <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                Click="NavigateBack" Opacity="0.2" Background="{DynamicResource ButtonBackgroundBrush}"></Button>
+                Click="NavigateBack" Opacity="0.2" Background="Transparent"></Button>
     </Grid>
 
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 60" Content="Jméno"></Label>

@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
       Title="Settings" Width="600" Height="500"
-      Background="{DynamicResource BackgroundColor}">
+      Background="{DynamicResource BackgroundBrush}">
 
     <Page.Resources>
         <!-- Styl pro CheckBox (zaoblený styl) -->
@@ -64,7 +64,7 @@
         <Grid Grid.Row="0" HorizontalAlignment="Left">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button Width="50" Height="50" Click="NavigateBack"
-                    Opacity="0.2" Background="{DynamicResource ButtonBackgroundBrush}"/>
+                    Opacity="0.2" Background="Transparent"/>
         </Grid>
 
         <!-- Nastavení -->
@@ -82,18 +82,21 @@
             <Button Content="Obnovit výchozí nastavení"
                     Style="{StaticResource RoundedButtonStyle}"
                     Click="ResetSettings_Click"
-                    Background="{DynamicResource ButtonBackgroundBrush}"/>
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource ButtonForegroundBrush}"/>
 
             <!-- Odhlásit -->
             <Button Content="Odhlásit uživatele"
                     Style="{StaticResource RoundedButtonStyle}"
-                    Background="{DynamicResource ButtonBackgroundBrush}"/>
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource ButtonForegroundBrush}"/>
 
             <!-- Vypnout aplikaci -->
             <Button Content="Vypnout aplikaci"
                     Style="{StaticResource RoundedButtonStyle}"
                     Click="ExitApp_Click"
-                    Background="{DynamicResource ButtonBackgroundBrush}"/>
+                    Background="{DynamicResource ButtonBackgroundBrush}"
+                    Foreground="{DynamicResource ButtonForegroundBrush}"/>
         </StackPanel>
     </Grid>
 </Page>

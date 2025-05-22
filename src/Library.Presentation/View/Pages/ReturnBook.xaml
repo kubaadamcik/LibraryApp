@@ -5,7 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="ReturnBook" Background="{DynamicResource BackgroundColor}">
+      Title="ReturnBook" Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
@@ -24,7 +24,7 @@
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0.2" Background="{DynamicResource ButtonBackgroundBrush}"></Button>
+                    Click="NavigateBack" Opacity="0.2" Background="Transparent"></Button>
         </Grid>
 
         <!-- Add your controls specific to the page below -->

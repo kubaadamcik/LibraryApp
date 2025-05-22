@@ -13,7 +13,7 @@ namespace ZaverecnyProjekt
 
         private readonly SolidColorBrush _darkBackground = new(Color.FromRgb(87, 87, 87));
         private readonly SolidColorBrush _lightBackground = new(Color.FromRgb(219, 219, 219));
-        private readonly SolidColorBrush _darkForeground = new(Color.FromRgb(153, 153, 153));
+        private readonly SolidColorBrush _darkForeground = new(Color.FromRgb(255, 255, 255));
         private readonly SolidColorBrush _lightForeground = new(Color.FromRgb(0, 0, 0));
         private readonly SolidColorBrush _lightbuttonBackground = new(Color.FromRgb(217, 217, 217));
         private readonly SolidColorBrush _darkbuttonBackground = new(Color.FromRgb(133, 133, 133));

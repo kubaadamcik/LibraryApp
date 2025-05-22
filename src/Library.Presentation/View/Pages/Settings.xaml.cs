@@ -13,12 +13,10 @@ namespace ZaverecnyProjekt.View.Pages
         public Settings(IReaderService readerservice)
         {
             InitializeComponent();
-
-            // Uložíme původní barvu pozadí
             _originalBackground = this.Background;
-
-            // Nastavení výchozího stavu CheckBoxu
-            DarkModeToggle.IsChecked = false;
+            
+            // Nastavení stavu CheckBoxu podle aktuálního tématu
+            DarkModeToggle.IsChecked = ThemeManager.Instance.IsDarkTheme;
         }
 
         private void NavigateBack(object sender, RoutedEventArgs e)
