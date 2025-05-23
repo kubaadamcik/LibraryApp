@@ -22,18 +22,18 @@
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0.2" Background="Transparent"></Button>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
         </Grid>
 
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 60" Content="Jméno" Foreground="{DynamicResource ButtonForegroundBrush}"></Label>
         <TextBox Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" Height="30" Margin="0 0 25 30"
-                 x:Name="TbReaderName"></TextBox>
+                 x:Name="TbReaderName" Background="{DynamicResource ButtonBackgroundBrush}"></TextBox>
 
         <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 60" Content="Emailová adresa" Foreground="{DynamicResource ButtonForegroundBrush}"></Label>
         <TextBox Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Height="30" Margin="25 0 0 30"
-                 x:Name="TbReaderEmail"></TextBox>
+                 x:Name="TbReaderEmail" Background="{DynamicResource ButtonBackgroundBrush}"></TextBox>
         
-        <Button Grid.Row="1" Grid.Column="2" Cursor="Hand" Margin="20" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button Grid.Row="1" Grid.Column="2" Cursor="Hand" Margin="20" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}" Height="100" Width="100">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -55,10 +55,10 @@
         </Button>
 
         <ListBox Grid.Row="1" Grid.RowSpan="1" Grid.Column="0" x:Name="LbReaders" SelectionChanged="ShowReaderInfo" HorizontalAlignment="Center" VerticalAlignment="Top"
-                 Width="200" Height="200"></ListBox>
+                 Width="200" Height="200" Background="{DynamicResource ButtonBackgroundBrush}"></ListBox>
 
         <ListView Grid.Column="1" Grid.Row="1" Grid.RowSpan="1" x:Name="LvReaderInfo" HorizontalAlignment="Left" VerticalAlignment="Top"
-                  Width="200" Height="200"></ListView>
+                  Width="200" Height="200" Background="{DynamicResource ButtonBackgroundBrush}"></ListView>
 
         <Button x:Name="btn_removeReader" Grid.Row="1" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Vymazat čtenáře" Visibility="Collapsed" Padding="10"
                 Click="RemoveReader"></Button>

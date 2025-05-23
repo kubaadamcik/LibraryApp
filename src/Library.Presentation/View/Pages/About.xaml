@@ -24,7 +24,7 @@
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0.2" Background="Transparent"></Button>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
         </Grid>
 
         <!-- Add your controls specific to the page below -->

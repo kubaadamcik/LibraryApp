@@ -22,7 +22,7 @@
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0.2" Background="Transparent"></Button>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
         </Grid>
 
         <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -50,7 +50,25 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="2" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
-                Padding="10" FontSize="15" Content="Pokračovat" Click="SelectReader" Background="{DynamicResource ButtonBackgroundBrush}"></Button>
+        <Button Grid.Row="2" Grid.Column="2" Click="SelectReader" Cursor="Hand" Margin="5" FontWeight="Medium" Height="30" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource ButtonBackgroundBrush}">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            CornerRadius="20" 
+                            BorderBrush="Gray" 
+                            BorderThickness="1" 
+                            Padding="0">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonTriggerBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            <TextBlock Text="Pokračovat" TextWrapping="Wrap" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+        </Button>
     </Grid>
 </Page>
