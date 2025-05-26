@@ -53,11 +53,6 @@ nuget.exe
 *.ldf
 *.sdf
 
-# Local development files
-*.db
-*.db-shm
-*.db-wal
-
 # WPF temporary files
 *.tmp
 *.TMP
