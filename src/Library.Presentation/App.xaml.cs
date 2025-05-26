@@ -36,6 +36,7 @@ public partial class App : Application
         services.AddTransient<ILibraryService, LibraryService>();
         services.AddTransient<IBookService, BookService>();
         services.AddTransient<IBookTransactionService, BookTransactionService>();
+        services.AddTransient<IReaderService, ReaderService>();
 
         services.AddTransient<MainWindow>();
 
