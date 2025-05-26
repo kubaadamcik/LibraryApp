@@ -8,9 +8,9 @@
       Title="BorrowBook" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition Width="4*"></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
@@ -22,7 +22,7 @@
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"/>
         </Grid>
 
         <Grid Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -32,25 +32,28 @@
             </Grid.ColumnDefinitions>
 
             <Label HorizontalAlignment="Right" VerticalAlignment="Center" Background="White"
-                   Content="Farma zvířat..." Opacity="0.5" x:Name="lbl_searchPlaceholder" Width="200" Height="30"></Label>
+                   Content="Farma zvířat..." Opacity="0.5" x:Name="lbl_searchPlaceholder" Width="200" Height="30"/>
 
             <TextBox VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" Width="200" Height="30" HorizontalContentAlignment="Left"
-                     x:Name="tb_searchBox" GotFocus="RemoveSearchPlaceholder"></TextBox>
+                     x:Name="tb_searchBox" GotFocus="RemoveSearchPlaceholder"/>
 
-            <Button  Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Najít" Height="30" Padding="5, 0, 5, 0" FontSize="11" Background="{DynamicResource ButtonBackgroundBrush}"
-                     Click="CreateBook"></Button>
+            <Button Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Najít" Height="30" Padding="5, 0, 5, 0" FontSize="11" Foreground="{DynamicResource ButtonForegroundBrush}" Background="{DynamicResource ButtonBackgroundBrush}"
+                    Click="CreateBook"/>
         </Grid>
 
-        <DataGrid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Top" ItemsSource="{Binding Books}">
+        <DataGrid Grid.Row="1" Grid.Column="1" Margin="10" 
+                  ItemsSource="{Binding Books}"
+                  AutoGenerateColumns="False"
+                  Background="{DynamicResource ButtonBackgroundBrush}">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Název"></DataGridTextColumn>
-                <DataGridTextColumn Header="Autor"></DataGridTextColumn>
-                <DataGridTextColumn Header="Rok Vydání"></DataGridTextColumn>
-                <DataGridTextColumn Header="Na skladě"></DataGridTextColumn>
+                <DataGridTextColumn Header="Název" Binding="{Binding Title}" Width="70"/>
+                <DataGridTextColumn Header="Autor" Binding="{Binding Author}" Width="70"/>
+                <DataGridTextColumn Header="Rok vydání" Binding="{Binding Year}"/>
+                <DataGridTextColumn Header="Na skladě" Binding="{Binding InStock}"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <Button Grid.Row="2" Grid.Column="2" Click="SelectReader" Cursor="Hand" Margin="5" FontWeight="Medium" Height="30" Width="80" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button Grid.Row="2" Grid.Column="2" Click="SelectReader" Width="130" Height="60" Cursor="Hand" Margin="5" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"

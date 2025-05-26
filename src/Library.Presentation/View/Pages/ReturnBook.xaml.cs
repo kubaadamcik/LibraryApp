@@ -25,6 +25,17 @@ public partial class ReturnBook : Page
             window.Width = this.Width;
         }
     }
+    
+    private void OnReaderSelected(object sender, SelectionChangedEventArgs e)
+    {
+        // Zde načtete knihy vybraného čtenáře
+    }
+
+    private void ReturnBook_Click(object sender, RoutedEventArgs e)
+    {
+        // Zde implementujete logiku pro vrácení knihy
+    }
+
 
     private void NavigateBack(object sender, RoutedEventArgs e)
     {

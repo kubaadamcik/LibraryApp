@@ -5,18 +5,18 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="ReaderManagement" Width="600" Height="500" Background="{DynamicResource BackgroundBrush}">
+      Title="ReaderManagement" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -26,14 +26,14 @@
         </Grid>
 
         <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0, 0, 0, 60" Content="Jméno" Foreground="{DynamicResource ButtonForegroundBrush}"></Label>
-        <TextBox Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" Height="30" Margin="0 0 25 30"
+        <TextBox Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" Height="30" Margin="0 0 45 30"
                  x:Name="TbReaderName" Background="{DynamicResource ButtonBackgroundBrush}"></TextBox>
 
-        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 0 60" Content="Emailová adresa" Foreground="{DynamicResource ButtonForegroundBrush}"></Label>
+        <Label Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0 0 40 60" Content="Emailová adresa" Foreground="{DynamicResource ButtonForegroundBrush}"></Label>
         <TextBox Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Height="30" Margin="25 0 0 30"
                  x:Name="TbReaderEmail" Background="{DynamicResource ButtonBackgroundBrush}"></TextBox>
         
-        <Button Grid.Row="1" Grid.Column="2" Cursor="Hand" Margin="20" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}" Height="100" Width="100">
+        <Button Grid.Row="1" Grid.Column="2" Cursor="Hand" FontWeight="Medium" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="{DynamicResource ButtonBackgroundBrush}" Height="100" Width="100">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"

@@ -5,29 +5,36 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="ShowBooks" Background="{DynamicResource BackgroundBrush}">
+      Title="ShowBooks" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"/>
         </Grid>
 
-        <!-- Add your controls specific to the page below -->
-
+        <DataGrid Grid.Row="1" Grid.Column="1" Margin="10"
+                  ItemsSource="{Binding Books}"
+                  AutoGenerateColumns="False"
+                  Background="{DynamicResource ButtonBackgroundBrush}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Název" Binding="{Binding Title}" Width="70" />
+                <DataGridTextColumn Header="Autor" Binding="{Binding Author}" Width="70"/>
+                <DataGridTextColumn Header="Rok vydání" Binding="{Binding Year}"/>
+                <DataGridTextColumn Header="Na skladě" Binding="{Binding InStock}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

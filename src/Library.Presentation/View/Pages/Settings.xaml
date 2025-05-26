@@ -5,8 +5,7 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="Settings" Width="600" Height="500"
-      Background="{DynamicResource BackgroundBrush}">
+      Title="Settings" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundBrush}">
 
     <Page.Resources>
         <!-- Styl pro CheckBox (zaoblený styl) -->

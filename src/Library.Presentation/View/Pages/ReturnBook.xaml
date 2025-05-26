@@ -5,29 +5,70 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
-      Title="ReturnBook" Background="{DynamicResource BackgroundBrush}">
+      Title="ReturnBook" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
         </Grid.RowDefinitions>
 
+        <!-- Tlačítko Zpět -->
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"/>
         </Grid>
 
-        <!-- Add your controls specific to the page below -->
+        <!-- Seznam čtenářů -->
+        <DataGrid Grid.Row="1" Grid.Column="1" Margin="10" 
+                  ItemsSource="{Binding Readers}"
+                  SelectionChanged="OnReaderSelected"
+                  AutoGenerateColumns="False"
+                  Background="{DynamicResource ButtonBackgroundBrush}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Jméno" Binding="{Binding Name}" Width="100"/>
+                <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
 
+        <!-- Seznam vypůjčených knih -->
+        <DataGrid Grid.Row="1" Grid.Column="2" Margin="10"
+                  ItemsSource="{Binding BorrowedBooks}"
+                  AutoGenerateColumns="False"
+                  Background="{DynamicResource ButtonBackgroundBrush}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Název" Binding="{Binding Title}" Width="70"/>
+                <DataGridTextColumn Header="Autor" Binding="{Binding Author}" Width="70"/>
+                <DataGridTextColumn Header="Vypůjčeno" Binding="{Binding BorrowDate}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Grid.Column="2" Grid.Row="3" Click="ReturnBook_Click" VerticalAlignment="Top" Cursor="Hand" Margin="10" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border x:Name="border"
+                            Background="{DynamicResource ButtonBackgroundBrush}"
+                            CornerRadius="20" 
+                            BorderBrush="Gray" 
+                            BorderThickness="1" 
+                            Padding="10">
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonTriggerBrush}"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Button.Template>
+            <TextBlock Text="Vrátit knihu" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
+        </Button>
     </Grid>
 </Page>
