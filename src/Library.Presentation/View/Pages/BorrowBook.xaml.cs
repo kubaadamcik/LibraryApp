@@ -62,7 +62,7 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
 
     private void CreateBook(object sender, RoutedEventArgs e)
     {
-        _bookService.AddBook(new Book() { Author = "Jakub Adamčík", Pages = 69, Title = tb_searchBox.Text });
+        _bookService.AddBook(new Book() { Author = "Jakub Adamčík", Description = "It's an interesting book!", Pages = 69, Title = tb_searchBox.Text });
 
         Console.WriteLine("Kniha se asi přidala");
 

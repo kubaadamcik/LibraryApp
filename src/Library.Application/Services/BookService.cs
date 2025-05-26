@@ -30,8 +30,6 @@ public class BookService : IBookService
     {
         await _context.Books.AddAsync(book);
 
-        Console.WriteLine("Kniha má být přidaná");
-
         await _context.SaveChangesAsync();
     }
 

@@ -33,12 +33,10 @@ public partial class App : Application
 
         services.AddSingleton<Reader>();
         
-        services.AddTransient<IReaderService, ReaderService>();
         services.AddTransient<ILibraryService, LibraryService>();
         services.AddTransient<IBookService, BookService>();
         services.AddTransient<IBookTransactionService, BookTransactionService>();
-
-        services.AddSingleton<IPasswordHasher, PasswordHasher>();
+        services.AddTransient<IReaderService, ReaderService>();
 
         services.AddTransient<MainWindow>();
 

@@ -33,7 +33,7 @@
         <TextBox Grid.Column="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Height="30" Margin="25 0 0 30"
                  x:Name="TbReaderEmail" Background="{DynamicResource ButtonBackgroundBrush}"></TextBox>
         
-        <Button Grid.Row="1" Grid.Column="2" Cursor="Hand" FontWeight="Medium" VerticalAlignment="Bottom" HorizontalAlignment="Left" Background="{DynamicResource ButtonBackgroundBrush}" Height="100" Width="100">
+        <Button Grid.Row="1" Grid.Column="2" Cursor="Hand" Margin="20" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}" Height="100" Width="100" Click="AddReader">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"

@@ -2,6 +2,7 @@
 using System.Windows.Controls;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
+using Library.Domain.ValueObjects;
 
 namespace ZaverecnyProjekt.View.Pages;
 
@@ -42,8 +43,17 @@ public partial class ReaderManagement : Page
 
     private async void AddReader(object sender, RoutedEventArgs e)
     {
-        if (string.IsNullOrEmpty(TbReaderName.Text) || string.IsNullOrEmpty(TbReaderEmail.Text))
+        if (string.IsNullOrEmpty(TbReaderName.Text))
+        {
+            MessageBox.Show("Zadejte jméno čtenáře", "Chyba", MessageBoxButton.OK);
             return;
+        }
+
+        if (!Email.IsValid(TbReaderEmail.Text))
+        {
+            MessageBox.Show("Zadejte správně emailovou adresu", "Chyba", MessageBoxButton.OK, MessageBoxImage.Error);
+            return;
+        }
 
         Reader reader = new Reader() {FullName = TbReaderName.Text, Email = TbReaderEmail.Text};
 
