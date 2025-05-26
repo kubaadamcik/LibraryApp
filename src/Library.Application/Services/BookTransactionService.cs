@@ -4,11 +4,22 @@ using Library.Infrastructure.Persistence;
 
 namespace Library.Application.Services;
 
-public class BookTransactionService(DatabaseContext context) : IBookTransactionService
+public class BookTransactionService(DatabaseContext context, IBookService bookService, IReaderService readerService)
+    : IBookTransactionService
 {
-    public Task<BookTransaction> CreateTransaction(int bookId, int readerId)
+    public async Task<BookTransaction> CreateTransaction(int bookId, int readerId)
     {
-        throw new NotImplementedException();
+        BookTransaction bookTransaction = new BookTransaction()
+        {
+            Book = await bookService.GetBookWithId(bookId), BookId = bookId,
+            Reader = await readerService.GetUserWithId(readerId), ReaderId = readerId
+        };
+
+        await context.BookTransactions.AddAsync(bookTransaction);
+
+        await context.SaveChangesAsync();
+
+        return bookTransaction;
     }
 
     public Task<int> CountReaderBorrowedBooks(int readerId)
