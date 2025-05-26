@@ -16,4 +16,19 @@ public class BookTransaction
     public int ReaderId { get; set; }
     [ForeignKey("ReaderId")]
     public virtual Reader Reader { get; set; }
+
+    public BookTransaction(Book book, Reader reader)
+    {
+        Reader = reader;
+        Book = book;
+
+        ReaderId = reader.Id;
+        BookId = book.Id;
+    }
+
+    public void Return()
+    {
+        ReturnedDate = DateTime.Now;
+        IsReturned = true;
+    }
 }
