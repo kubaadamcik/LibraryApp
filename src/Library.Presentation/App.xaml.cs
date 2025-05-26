@@ -38,8 +38,6 @@ public partial class App : Application
         services.AddTransient<IBookService, BookService>();
         services.AddTransient<IBookTransactionService, BookTransactionService>();
 
-        services.AddSingleton<IPasswordHasher, PasswordHasher>();
-
         services.AddTransient<MainWindow>();
 
         _serviceProvider = services.BuildServiceProvider();
