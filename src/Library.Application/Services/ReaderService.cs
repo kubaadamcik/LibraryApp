@@ -9,12 +9,12 @@ public class ReaderService(DatabaseContext context) : IReaderService
 {
     public event Func<Task> ContextChanged;
 
-    public async Task<Reader> GetUserWithId(int id)
+    public async Task<Reader> GetReaderWithId(int id)
     {
         return await context.Readers.FirstAsync(user => user.Id == id);
     }
 
-    public async Task<Reader> GetUserWithName(string name)
+    public async Task<Reader> GetReaderWithName(string name)
     {
         return await context.Readers.FirstAsync(user => user.FullName == name);
     }

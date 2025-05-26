@@ -9,12 +9,14 @@ public partial class MainPage : Page
 {
     private IReaderService _readerService { get; set; }
     private IBookService _bookService { get; set; }
-    public MainPage(IReaderService readerService, IBookService bookService)
+    private ILibraryService _libraryService { get; set; }
+    public MainPage(IReaderService readerService, IBookService bookService, ILibraryService libraryService)
     {
         InitializeComponent();
 
         _readerService = readerService;
         _bookService = bookService;
+        _libraryService = libraryService;
 
         //Loaded += OnLoaded;
     }
@@ -35,7 +37,7 @@ public partial class MainPage : Page
 
     private void BorrowBook(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new BorrowBook(_bookService));
+        NavigationService.Navigate(new BorrowBook(_bookService, _readerService, _libraryService));
     }
     
     private void ReturnBook(object sender, RoutedEventArgs e)

@@ -1,4 +1,4 @@
-﻿<Window x:Class="ZaverecnyProjekt.View.Dialogs.SelectUserDialog"
+﻿<Window x:Class="ZaverecnyProjekt.View.Dialogs.SelectReaderDialog"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -19,6 +19,6 @@
 
         <ListBox x:Name="LbReaders"></ListBox>
 
-        <Button Grid.Row="1" Grid.Column="1" Content="Vypůjčit"></Button>
+        <Button Grid.Row="1" Grid.Column="1" Content="Vypůjčit" Click="BorrowBook"></Button>
     </Grid>
 </Window>

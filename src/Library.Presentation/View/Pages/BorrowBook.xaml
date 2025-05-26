@@ -41,7 +41,7 @@
                     Click="CreateBook"/>
         </Grid>
 
-        <DataGrid Grid.Row="1" Grid.Column="1" Margin="10" 
+        <DataGrid x:Name="DgBooks" Grid.Row="1" Grid.Column="1" Margin="10"
                   ItemsSource="{Binding Books}"
                   AutoGenerateColumns="False"
                   Background="{DynamicResource ButtonBackgroundBrush}">

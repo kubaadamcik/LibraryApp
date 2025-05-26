@@ -5,12 +5,15 @@ using System.Windows;
 using System.Windows.Controls;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
+using ZaverecnyProjekt.View.Dialogs;
 
 namespace ZaverecnyProjekt.View.Pages;
 
 public partial class BorrowBook : Page, INotifyPropertyChanged
 {
     private IBookService _bookService { get; set; }
+    private IReaderService _readerService { get; set; }
+    private ILibraryService _libraryService { get; set; }
     private ObservableCollection<Book> _books;
 
     public ObservableCollection<Book> Books
@@ -21,13 +24,15 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
             _books = value;
             OnPropertyChanged(nameof(Books));
         }
-
     }
-    public BorrowBook(IBookService bookService)
+
+    public BorrowBook(IBookService bookService, IReaderService readerService, ILibraryService libraryService)
     {
         InitializeComponent();
 
         _bookService = bookService;
+        _readerService = readerService;
+        _libraryService = libraryService;
 
         Loaded += OnLoaded;
     }
@@ -57,14 +62,18 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
 
     private void SelectReader(object sender, RoutedEventArgs e)
     {
-        throw new NotImplementedException();
+        int bookId = _books[DgBooks.SelectedIndex].Id;
+        SelectReaderDialog dialog = new SelectReaderDialog(_readerService, _libraryService, bookId, _bookService);
+
+        dialog.ShowDialog();
     }
 
     private void CreateBook(object sender, RoutedEventArgs e)
     {
-        _bookService.AddBook(new Book() { Author = "Jakub Adamčík", Description = "It's an interesting book!", Pages = 69, Title = tb_searchBox.Text });
-
-        Console.WriteLine("Kniha se asi přidala");
+        _bookService.AddBook(new Book()
+        {
+            Author = "Jakub Adamčík", Description = "It's an interesting book!", Pages = 69, Title = tb_searchBox.Text
+        });
 
         GetAllBooks();
     }

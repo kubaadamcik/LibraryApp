@@ -22,10 +22,4 @@ public class BookTransaction
         BorrowedDate = DateTime.Now;
         IsReturned = false;
     }
-    
-    public void Return()
-    {
-        ReturnedDate = DateTime.Now;
-        IsReturned = true;
-    }
 }

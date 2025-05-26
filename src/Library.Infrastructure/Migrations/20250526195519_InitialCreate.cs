@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -16,8 +17,10 @@ namespace Library.Infrastructure.Migrations
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Title = table.Column<string>(type: "TEXT", nullable: false),
-                    Author = table.Column<string>(type: "TEXT", nullable: false),
+                    Title = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Author = table.Column<string>(type: "TEXT", maxLength: 100, nullable: false),
+                    Description = table.Column<string>(type: "TEXT", maxLength: 250, nullable: false),
+                    Count = table.Column<int>(type: "INTEGER", nullable: false),
                     Pages = table.Column<int>(type: "INTEGER", nullable: false),
                     Year = table.Column<int>(type: "INTEGER", nullable: false),
                     Price = table.Column<double>(type: "REAL", nullable: false)
@@ -42,41 +45,53 @@ namespace Library.Infrastructure.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ReaderInfo",
+                name: "BookTransactions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    CurrentCountOfBorrowedBooks = table.Column<int>(type: "INTEGER", nullable: false),
-                    BorrowedBooksCount = table.Column<int>(type: "INTEGER", nullable: false),
-                    UserId = table.Column<int>(type: "INTEGER", nullable: false)
+                    BorrowedDate = table.Column<DateTime>(type: "TEXT", nullable: false),
+                    ReturnedDate = table.Column<DateTime>(type: "TEXT", nullable: true),
+                    IsReturned = table.Column<bool>(type: "INTEGER", nullable: false),
+                    BookId = table.Column<int>(type: "INTEGER", nullable: false),
+                    ReaderId = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ReaderInfo", x => x.Id);
+                    table.PrimaryKey("PK_BookTransactions", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ReaderInfo_Readers_UserId",
-                        column: x => x.UserId,
+                        name: "FK_BookTransactions_Books_BookId",
+                        column: x => x.BookId,
+                        principalTable: "Books",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_BookTransactions_Readers_ReaderId",
+                        column: x => x.ReaderId,
                         principalTable: "Readers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_ReaderInfo_UserId",
-                table: "ReaderInfo",
-                column: "UserId",
-                unique: true);
+                name: "IX_BookTransactions_BookId",
+                table: "BookTransactions",
+                column: "BookId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BookTransactions_ReaderId",
+                table: "BookTransactions",
+                column: "ReaderId");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Books");
+                name: "BookTransactions");
 
             migrationBuilder.DropTable(
-                name: "ReaderInfo");
+                name: "Books");
 
             migrationBuilder.DropTable(
                 name: "Readers");

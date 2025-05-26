@@ -7,5 +7,5 @@ public interface IBookTransactionService
     public Task<BookTransaction> CreateTransaction(int bookId, int readerId);
     public Task<int> CountReaderBorrowedBooks(int readerId);
     public Task<int> CountBorrowedBooks(int bookId);
-    public Task MarkAsReturned(int readerId, int bookId);
+    public Task MarkAsReturned(int bookId, int readerId);
 }

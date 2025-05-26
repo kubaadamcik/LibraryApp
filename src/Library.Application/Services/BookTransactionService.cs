@@ -11,7 +11,7 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
     public async Task<BookTransaction> CreateTransaction(int bookId, int readerId)
     {
         var book = await bookService.GetBookWithId(bookId);
-        var reader = await readerService.GetUserWithId(readerId);
+        var reader = await readerService.GetReaderWithId(readerId);
 
         var bookTransaction = new BookTransaction
         {
@@ -39,10 +39,13 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
         return await transactions.CountAsync();
     }
 
-    public async Task MarkAsReturned(int readerId, int bookId)
+    public async Task MarkAsReturned( int bookId, int readerId)
     {
         BookTransaction bookTransaction = await context.BookTransactions.FirstAsync(t => t.ReaderId == readerId && t.BookId == bookId);
 
-        bookTransaction.Return();
+        bookTransaction.IsReturned = true;
+        bookTransaction.ReturnedDate = DateTime.Now;
+
+        await context.SaveChangesAsync();
     }
 }
