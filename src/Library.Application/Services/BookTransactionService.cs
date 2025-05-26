@@ -1,6 +1,7 @@
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
 using Library.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Library.Application.Services;
 
@@ -9,11 +10,8 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
 {
     public async Task<BookTransaction> CreateTransaction(int bookId, int readerId)
     {
-        BookTransaction bookTransaction = new BookTransaction()
-        {
-            Book = await bookService.GetBookWithId(bookId), BookId = bookId,
-            Reader = await readerService.GetUserWithId(readerId), ReaderId = readerId
-        };
+        BookTransaction bookTransaction = new BookTransaction(await bookService.GetBookWithId(bookId),
+            await readerService.GetUserWithId(readerId));
 
         await context.BookTransactions.AddAsync(bookTransaction);
 
@@ -22,18 +20,24 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
         return bookTransaction;
     }
 
-    public Task<int> CountReaderBorrowedBooks(int readerId)
+    public async Task<int> CountReaderBorrowedBooks(int readerId)
     {
-        throw new NotImplementedException();
+        var transactions =  context.BookTransactions.Where(t => t.ReaderId == readerId);
+
+        return await transactions.CountAsync();
     }
 
-    public Task<int> CountBorrowedBooks(int bookId)
+    public async Task<int> CountBorrowedBooks(int bookId)
     {
-        throw new NotImplementedException();
+        var transactions = context.BookTransactions.Where(t => t.BookId == bookId);
+
+        return await transactions.CountAsync();
     }
 
-    public Task MarkAsReturned(int readerId, int bookId)
+    public async Task MarkAsReturned(int readerId, int bookId)
     {
-        throw new NotImplementedException();
+        BookTransaction bookTransaction = await context.BookTransactions.FirstAsync(t => t.ReaderId == readerId && t.BookId == bookId);
+
+        bookTransaction.Return();
     }
 }
