@@ -10,11 +10,16 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
 {
     public async Task<BookTransaction> CreateTransaction(int bookId, int readerId)
     {
-        BookTransaction bookTransaction = new BookTransaction(await bookService.GetBookWithId(bookId),
-            await readerService.GetUserWithId(readerId));
+        var book = await bookService.GetBookWithId(bookId);
+        var reader = await readerService.GetUserWithId(readerId);
+
+        var bookTransaction = new BookTransaction
+        {
+            BookId = bookId,
+            ReaderId = readerId
+        };
 
         await context.BookTransactions.AddAsync(bookTransaction);
-
         await context.SaveChangesAsync();
 
         return bookTransaction;

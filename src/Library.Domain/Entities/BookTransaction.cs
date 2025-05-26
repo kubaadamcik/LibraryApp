@@ -17,15 +17,12 @@ public class BookTransaction
     [ForeignKey("ReaderId")]
     public virtual Reader Reader { get; set; }
 
-    public BookTransaction(Book book, Reader reader)
+    public BookTransaction()
     {
-        Reader = reader;
-        Book = book;
-
-        ReaderId = reader.Id;
-        BookId = book.Id;
+        BorrowedDate = DateTime.Now;
+        IsReturned = false;
     }
-
+    
     public void Return()
     {
         ReturnedDate = DateTime.Now;

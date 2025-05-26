@@ -25,10 +25,16 @@ namespace Library.Infrastructure.Migrations
 
                     b.Property<string>("Author")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Count")
                         .HasColumnType("INTEGER");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("TEXT");
 
                     b.Property<int>("Pages")
                         .HasColumnType("INTEGER");
@@ -38,6 +44,7 @@ namespace Library.Infrastructure.Migrations
 
                     b.Property<string>("Title")
                         .IsRequired()
+                        .HasMaxLength(100)
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Year")
