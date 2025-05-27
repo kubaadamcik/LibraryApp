@@ -24,9 +24,9 @@ public partial class ReaderManagement : Page
         Loaded += OnLoaded;
     }
 
-    private void OnLoaded(object sender, RoutedEventArgs e)
+    private async void OnLoaded(object sender, RoutedEventArgs e)
     {
-        _ = GetAllReaders();
+        await GetAllReaders();
     }
 
     private async Task GetAllReaders()
