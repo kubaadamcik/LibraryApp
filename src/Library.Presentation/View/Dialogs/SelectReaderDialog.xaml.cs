@@ -48,10 +48,13 @@ public partial class SelectReaderDialog : Window
             MessageBox.Show($"Kniha byla {book.Title} vypůjčena uživateli {reader.FullName}", "Úspěch",
                 MessageBoxButton.OK, MessageBoxImage.Information);
 
+            this.Close();
             return;
         }
 
         MessageBox.Show("Nastala neznámá chyba při půjčování knihy", "Chyba", MessageBoxButton.OK,
             MessageBoxImage.Error);
+
+        this.Close();
     }
 }

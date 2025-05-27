@@ -11,7 +11,7 @@ public class LibraryService(
     public async Task<bool> BorrowBook(int bookId, int readerId)
     {
         var book = await bookService.GetBookWithId(bookId);
-        if (book is null || book.Count < 1) return false;
+        if (book is null) return false;
 
         await bookService.BorrowBook(bookId);
         await transactionService.CreateTransaction(bookId, readerId);

@@ -33,10 +33,10 @@ public partial class App : Application
 
         services.AddSingleton<Reader>();
         
-        services.AddTransient<ILibraryService, LibraryService>();
-        services.AddTransient<IBookService, BookService>();
-        services.AddTransient<IBookTransactionService, BookTransactionService>();
-        services.AddTransient<IReaderService, ReaderService>();
+        services.AddSingleton<ILibraryService, LibraryService>();
+        services.AddSingleton<IBookService, BookService>();
+        services.AddSingleton<IBookTransactionService, BookTransactionService>();
+        services.AddSingleton<IReaderService, ReaderService>();
 
         services.AddTransient<MainWindow>();
 
