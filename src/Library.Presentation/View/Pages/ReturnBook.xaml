@@ -50,7 +50,7 @@
                 <DataGridTextColumn Header="Vypůjčeno" Binding="{Binding BorrowDate}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Grid.Column="2" Grid.Row="3" Click="ReturnBook_Click" VerticalAlignment="Top" Cursor="Hand" Margin="10" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button Grid.Column="2" Grid.Row="3" Height="70" Click="ReturnBook_Click" VerticalAlignment="Top" Cursor="Hand" Margin="10" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
