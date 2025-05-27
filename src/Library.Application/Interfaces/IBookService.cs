@@ -10,5 +10,4 @@ public interface IBookService
     public Task<string?> RemoveBookWithId(int id);
     public Task BorrowBook(int bookId);
     public Task ReturnBook(int bookId);
-    public Task<List<Book>> SearchBooks(string prompt);
 }

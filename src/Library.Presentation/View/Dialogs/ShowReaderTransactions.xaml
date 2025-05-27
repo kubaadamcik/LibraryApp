@@ -5,8 +5,14 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:ZaverecnyProjekt.View.Dialogs"
         mc:Ignorable="d"
-        Title="ShowReaderTransactions" Height="450" Width="800">
+        Title="ShowReaderTransactions" Height="450" Width="450">
     <Grid>
-        <ListView x:Name="LvTransactions"></ListView>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <ListBox x:Name="LbBooks"></ListBox>
+        
+        <Button Grid.Row="1" Click="ReturnBook"></Button>
     </Grid>
 </Window>

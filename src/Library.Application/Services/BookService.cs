@@ -69,16 +69,4 @@ public class BookService : IBookService
         _context.Update(book);
         await _context.SaveChangesAsync();
     }
-
-    public async Task<List<Book>> SearchBooks (string prompt)
-    {
-        List<Book> books = await _context.Books.Where(b =>
-            b.Title.Contains(prompt, StringComparison.OrdinalIgnoreCase) ||
-            b.Author.Contains(prompt, StringComparison.OrdinalIgnoreCase))
-            .ToListAsync();
-
-        return books;
-    }
-
-    
 }

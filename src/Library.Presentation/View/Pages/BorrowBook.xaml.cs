@@ -36,7 +36,9 @@ public partial class BorrowBook : Page
         _readers = await _readerService.GetAllReaders();
         _books = await _bookService.GetAllBooks();
 
-
+        LbReaders.Items.Clear();
+        LbBooks.Items.Clear();
+        
         foreach (var book in _books)
         {
             LbBooks.Items.Add(book.Title);
