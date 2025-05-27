@@ -4,13 +4,14 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
 using ZaverecnyProjekt.View.Dialogs;
 
 namespace ZaverecnyProjekt.View.Pages;
 
-public partial class BorrowBook : Page, INotifyPropertyChanged
+public partial class BorrowBook : Page
 {
     private IBookService _bookService;
     private IReaderService _readerService;
@@ -26,6 +27,8 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
         _readerService = readerService;
         _libraryService = libraryService;
 
+        
+        LbReaders.Foreground = Brushes.White;
         
         LbReaders.Items.Add("Ahoj");
 
@@ -59,13 +62,9 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
         NavigationService.GoBack();
     }
 
-    private void SelectReader(object sender, RoutedEventArgs e)
+    private void Borrow(object sender, RoutedEventArgs e)
     {
-        if (LbBooks.SelectedIndex == -1 || LbReaders.SelectedIndex == -1) return;
-
-        var selectedBook = _books[LbBooks.SelectedIndex];
-        var dialog = new SelectReaderDialog(_readerService, _libraryService, selectedBook.Id, _bookService);
-        dialog.ShowDialog();
+        
     }
 
     private async void CreateBook(object sender, RoutedEventArgs e)
@@ -78,8 +77,4 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
             Title = tb_searchBox.Text
         });
     }
-
-    public event PropertyChangedEventHandler PropertyChanged;
-    protected void OnPropertyChanged([CallerMemberName] string propertyName = "") =>
-        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 }
