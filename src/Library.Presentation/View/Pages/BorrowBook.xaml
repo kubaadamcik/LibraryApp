@@ -41,7 +41,7 @@
         </Grid>
 
         <!-- ČTENÁŘI -->
-        <ListBox x:Name="DgReaders" Grid.Row="1" Grid.Column="0" Margin="10"
+        <ListBox x:Name="LbReaders" Grid.Row="1" Grid.Column="0" Margin="10"
                  ItemsSource="{Binding Readers}"
                  Background="{DynamicResource ButtonBackgroundBrush}"
                  BorderThickness="1"
@@ -57,7 +57,7 @@
         </ListBox>
 
         <!-- KNIHY -->
-        <ListBox x:Name="DgBooks" Grid.Row="1" Grid.Column="1" Margin="10"
+        <ListBox x:Name="LbBooks" Grid.Row="1" Grid.Column="1" Margin="10"
                  ItemsSource="{Binding Books}"
                  Background="{DynamicResource ButtonBackgroundBrush}"
                  BorderThickness="1">

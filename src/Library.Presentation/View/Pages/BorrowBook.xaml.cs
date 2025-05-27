@@ -16,20 +16,8 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
     private IReaderService _readerService;
     private ILibraryService _libraryService;
 
-    private ObservableCollection<Book> _books;
-    private ObservableCollection<Reader> _readers;
-
-    public ObservableCollection<Book> Books
-    {
-        get => _books;
-        set { _books = value; OnPropertyChanged(); }
-    }
-
-    public ObservableCollection<Reader> Readers
-    {
-        get => _readers;
-        set { _readers = value; OnPropertyChanged(); }
-    }
+    private List<Book> _books;
+    private List<Reader> _readers;
 
     public BorrowBook(IBookService bookService, IReaderService readerService, ILibraryService libraryService)
     {
@@ -38,24 +26,27 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
         _readerService = readerService;
         _libraryService = libraryService;
 
-        DataContext = this;       // <- PŘESUNUTO SEM
+        
+        LbReaders.Items.Add("Ahoj");
 
         Loaded += OnLoaded;
     }
 
     private async void OnLoaded(object sender, RoutedEventArgs e)
     {
-        await LoadData();            // <-- chybělo
-        DataContext = this;          // <-- chybělo
-    }
+        _readers = await _readerService.GetAllReaders();
+        _books = await _bookService.GetAllBooks();
 
-    private async Task LoadData()
-    {
-        var bookList = await _bookService.GetAllBooks();
-        Books = new ObservableCollection<Book>(bookList);
 
-        var readerList = await _readerService.GetAllReaders();
-        Readers = new ObservableCollection<Reader>(readerList);
+        foreach (var book in _books)
+        {
+            LbBooks.Items.Add(book.Title);
+        }
+
+        foreach (var reader in _readers)
+        {
+            LbReaders.Items.Add(reader.FullName);
+        }
     }
 
     private void RemoveSearchPlaceholder(object sender, RoutedEventArgs e)
@@ -70,9 +61,9 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
 
     private void SelectReader(object sender, RoutedEventArgs e)
     {
-        if (DgBooks.SelectedIndex == -1 || DgReaders.SelectedIndex == -1) return;
+        if (LbBooks.SelectedIndex == -1 || LbReaders.SelectedIndex == -1) return;
 
-        var selectedBook = Books[DgBooks.SelectedIndex];
+        var selectedBook = _books[LbBooks.SelectedIndex];
         var dialog = new SelectReaderDialog(_readerService, _libraryService, selectedBook.Id, _bookService);
         dialog.ShowDialog();
     }
@@ -86,8 +77,6 @@ public partial class BorrowBook : Page, INotifyPropertyChanged
             Pages = 69,
             Title = tb_searchBox.Text
         });
-
-        await LoadData();
     }
 
     public event PropertyChangedEventHandler PropertyChanged;
