@@ -11,12 +11,12 @@ namespace ZaverecnyProjekt
 
         public bool IsDarkTheme { get; private set; }
 
-        private readonly SolidColorBrush _darkBackground = new(Color.FromRgb(87, 87, 87));
+        private readonly SolidColorBrush _darkBackground = new(Color.FromRgb(64, 64, 64));
         private readonly SolidColorBrush _lightBackground = new(Color.FromRgb(235, 235, 235));
         private readonly SolidColorBrush _darkForeground = new(Color.FromRgb(255, 255, 255));
         private readonly SolidColorBrush _lightForeground = new(Color.FromRgb(0, 0, 0));
         private readonly SolidColorBrush _lightbuttonBackground = new(Color.FromRgb(217, 217, 217));
-        private readonly SolidColorBrush _darkbuttonBackground = new(Color.FromRgb(120, 120, 120));
+        private readonly SolidColorBrush _darkbuttonBackground = new(Color.FromRgb(84, 84, 84));
         private readonly SolidColorBrush _darkbuttonForeground = new(Color.FromRgb(255, 255, 255));
         private readonly SolidColorBrush _lightbuttonForeground = new(Color.FromRgb(0, 0, 0));
         private readonly SolidColorBrush _lightTrigger = new(Color.FromRgb(196, 196, 196));
