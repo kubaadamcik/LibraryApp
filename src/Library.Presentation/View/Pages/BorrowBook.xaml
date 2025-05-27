@@ -39,65 +39,11 @@
                     FontSize="11" Foreground="{DynamicResource ButtonForegroundBrush}" Background="{DynamicResource ButtonBackgroundBrush}"
                     Click="CreateBook"/>
         </Grid>
-
-        <!-- ČTENÁŘI -->
-        <ListBox x:Name="LbReaders" Grid.Row="1" Grid.Column="0" Margin="10"
-                 Background="{DynamicResource ButtonBackgroundBrush}"
-                 BorderThickness="1"
-                 Foreground="{DynamicResource ButtonForegroundBrush}">
-            <!--
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding FirstName}" Margin="5"/>
-                        <TextBlock Text="{Binding LastName}" Margin="5"/>
-                    </StackPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            -->
-        </ListBox>
-
-        <!-- KNIHY -->
-        <ListBox x:Name="LbBooks" Grid.Row="1" Grid.Column="1" Margin="10"
-                 Background="{DynamicResource ButtonBackgroundBrush}"
-                 BorderThickness="1">
-            <!--
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid Width="300">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="70"/>
-                            <ColumnDefinition Width="70"/>
-                        </Grid.ColumnDefinitions>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-            <ListBox.Template>
-                <ControlTemplate TargetType="ListBox">
-                    <DockPanel>
-                        <Grid DockPanel.Dock="Top" Background="{DynamicResource ButtonBackgroundBrush}">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="70"/>
-                                <ColumnDefinition Width="70"/>
-                                <ColumnDefinition Width="70"/>
-                                <ColumnDefinition Width="70"/>
-                            </Grid.ColumnDefinitions>
-                            <TextBlock Text="Název" Grid.Column="0" FontWeight="Bold" Margin="5"/>
-                            <TextBlock Text="Autor" Grid.Column="1" FontWeight="Bold" Margin="5"/>
-                            <TextBlock Text="Rok vydání" Grid.Column="2" FontWeight="Bold" Margin="5"/>
-                            <TextBlock Text="Na skladě" Grid.Column="3" FontWeight="Bold" Margin="5"/>
-                        </Grid>
-                        <ScrollViewer>
-                            <ItemsPresenter/>
-                        </ScrollViewer>
-                    </DockPanel>
-                </ControlTemplate>
-            </ListBox.Template>
-            -->
-        </ListBox>
-
+        
+        <ListBox x:Name="LbReaders" Grid.Row="1"></ListBox>
+        
+        <ListBox x:Name="LbBooks" Grid.Row="1" Grid.Column="1"></ListBox>
+        
         <Button Grid.Row="2" Grid.Column="2" Click="Borrow" Width="130" Height="60" Cursor="Hand" Margin="5"
                 FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Background="{DynamicResource ButtonBackgroundBrush}">

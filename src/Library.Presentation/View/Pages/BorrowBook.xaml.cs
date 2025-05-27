@@ -17,8 +17,8 @@ public partial class BorrowBook : Page
     private IReaderService _readerService;
     private ILibraryService _libraryService;
 
-    private List<Book> _books;
-    private List<Reader> _readers;
+    private List<Book> _books { get; set; }
+    private List<Reader> _readers { get; set; }
 
     public BorrowBook(IBookService bookService, IReaderService readerService, ILibraryService libraryService)
     {
@@ -28,10 +28,6 @@ public partial class BorrowBook : Page
         _libraryService = libraryService;
 
         
-        LbReaders.Foreground = Brushes.White;
-        
-        LbReaders.Items.Add("Ahoj");
-
         Loaded += OnLoaded;
     }
 
@@ -62,9 +58,20 @@ public partial class BorrowBook : Page
         NavigationService.GoBack();
     }
 
-    private void Borrow(object sender, RoutedEventArgs e)
+    private async void Borrow(object sender, RoutedEventArgs e)
     {
+        if (LbReaders.SelectedIndex == -1 || LbReaders.SelectedIndex == -1) return;
+        int bookId = _books[LbBooks.SelectedIndex].Id;
+        int readerId = _readers[LbReaders.SelectedIndex].Id;
         
+
+        if (await _libraryService.BorrowBook(bookId, readerId))
+        {
+            MessageBox.Show("Kniha byla zapůjčena", "Úspěch");
+            return;
+        }
+
+        MessageBox.Show("Nastala chyba");
     }
 
     private async void CreateBook(object sender, RoutedEventArgs e)
