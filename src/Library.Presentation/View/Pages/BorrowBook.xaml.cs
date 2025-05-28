@@ -27,11 +27,11 @@ public partial class BorrowBook : Page
         _readerService = readerService;
         _libraryService = libraryService;
 
+        UpdateListboxes();
         
-        Loaded += OnLoaded;
     }
 
-    private async void OnLoaded(object sender, RoutedEventArgs e)
+    private async void UpdateListboxes()
     {
         _readers = await _readerService.GetAllReaders();
         _books = await _bookService.GetAllBooks();
@@ -78,6 +78,7 @@ public partial class BorrowBook : Page
 
     private async void CreateBook(object sender, RoutedEventArgs e)
     {
+        if (string.IsNullOrEmpty(tb_searchBox.Text)) return;
         await _bookService.AddBook(new Book()
         {
             Author = "Jakub Adamčík",
@@ -85,5 +86,7 @@ public partial class BorrowBook : Page
             Pages = 69,
             Title = tb_searchBox.Text
         });
+        
+        UpdateListboxes();
     }
 }

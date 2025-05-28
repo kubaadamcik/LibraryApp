@@ -24,7 +24,7 @@ public partial class ShowReaderTransactions  : Window
 
     private async Task GetBorrowedBooks()
     {
-        _books = await _bookTransactionService.GetReaderBorrowedBooks(readerId);
+        _books = new List<Book>(await _bookTransactionService.GetReaderBorrowedBooks(readerId));
 
         LbBooks.Items.Clear();
         

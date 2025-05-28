@@ -21,16 +21,18 @@ public partial class MainWindow : Window
     private IReaderService _readerService { get; set; }
     private IBookService _bookService { get; set; }
     private ILibraryService _libraryService { get; set; }
+    private IBookTransactionService _bookTransactionService { get; set; }
 
-    public MainWindow(IReaderService readerService, IBookService bookService, ILibraryService libraryService)
+    public MainWindow(IReaderService readerService, IBookService bookService, ILibraryService libraryService, IBookTransactionService bookTransactionService)
     {
         InitializeComponent();
 
         _readerService = readerService;
         _bookService = bookService;
         _libraryService = libraryService;
+        _bookTransactionService = bookTransactionService;
 
-        MainFrame.Navigate(new MainPage(_readerService, _bookService, _libraryService));
+        MainFrame.Navigate(new MainPage(_readerService, _bookService, _libraryService, _bookTransactionService));
     }
 
 }
