@@ -1,28 +1,39 @@
+using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using Library.Application.Interfaces;
+using Library.Domain.Entities;
 
 namespace ZaverecnyProjekt.View.Pages;
 
 public partial class ShowBooks : Page
 {
-    private IReaderService _readerService;
+    private readonly IBookService _bookService;
+    private List<Book> _books;
 
-    public ShowBooks(IReaderService readerService)
+    public ShowBooks(IBookService bookService)
     {
         InitializeComponent();
-
-        _readerService = readerService;
-
+        _bookService = bookService;
         Loaded += OnLoaded;
     }
 
-    private void OnLoaded(object sender, RoutedEventArgs e)
+    private async void OnLoaded(object sender, RoutedEventArgs e)
     {
-        if (Window.GetWindow(this) is Window window)
+        try
         {
-            window.Height = this.Height;
-            window.Width = this.Width;
+            _books = await _bookService.GetAllBooks();
+            LbBooks.Items.Clear();
+            
+            foreach (var book in _books)
+            {
+                LbBooks.Items.Add($"{book.Title} - {book.Author}");
+            }
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Chyba při načítání knih: {ex.Message}", "Chyba", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 
@@ -30,6 +41,4 @@ public partial class ShowBooks : Page
     {
         NavigationService.GoBack();
     }
-
-    // Add your logic for the specific page here
 }

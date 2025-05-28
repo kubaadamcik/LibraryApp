@@ -24,17 +24,6 @@
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
                     Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"/>
         </Grid>
-
-        <DataGrid Grid.Row="1" Grid.Column="1" Margin="10"
-                  ItemsSource="{Binding Books}"
-                  AutoGenerateColumns="False"
-                  Background="{DynamicResource ButtonBackgroundBrush}">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Název" Binding="{Binding Title}" Width="70" />
-                <DataGridTextColumn Header="Autor" Binding="{Binding Author}" Width="70"/>
-                <DataGridTextColumn Header="Rok vydání" Binding="{Binding Year}"/>
-                <DataGridTextColumn Header="Na skladě" Binding="{Binding InStock}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+        <ListBox x:Name="LbBooks" Grid.Row="1" Grid.Column="1" Background="{DynamicResource ButtonBackgroundBrush}" Foreground="{DynamicResource ButtonForegroundBrush}"></ListBox>
     </Grid>
 </Page>

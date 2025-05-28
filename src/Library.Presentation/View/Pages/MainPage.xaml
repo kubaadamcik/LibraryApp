@@ -25,7 +25,7 @@
     <UniformGrid Rows="2" Columns="3" Margin="20" Grid.Row="1">
 
         <!-- Tlačítka v gridu -->
-        <Button Click="BorrowBook" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button TabIndex="1" Click="BorrowBook" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -46,7 +46,7 @@
             <TextBlock Text="Vypůjčit knihu" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Button>
 
-        <Button Click="ReturnBook" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button TabIndex="2" Click="ReturnBook" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -67,7 +67,7 @@
             <TextBlock Text="Vrátit knihu" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Button>
 
-        <Button Click="ShowBooks" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button TabIndex="3" Click="ShowBooks" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -88,7 +88,7 @@
             <TextBlock Text="Zobrazit knihy" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Button>
 
-        <Button Click="ManageReaders" Cursor="Hand" Margin="5"  FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button TabIndex="4" Click="ManageReaders" Cursor="Hand" Margin="5"  FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -109,7 +109,7 @@
             <TextBlock Text="Registrovat uživatele" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Button>
 
-        <Button Click="ManageUsers" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button TabIndex="5" Click="ManageUsers" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -130,7 +130,7 @@
             <TextBlock Text="Spravovat uživatele" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Button>
 
-        <Button Click="ManageBorrows" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button TabIndex="6" Click="ManageBorrows" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -154,7 +154,7 @@
 
     <!-- Spodní tlačítka -->
     <StackPanel Orientation="Horizontal" Margin="0 0 0 10" Grid.Row="2" HorizontalAlignment="Center">
-        <Button Click="Settings" Cursor="Hand" Background="{DynamicResource ButtonBackgroundBrush}" Padding="5">
+        <Button TabIndex="7" Click="Settings" Cursor="Hand" Background="{DynamicResource ButtonBackgroundBrush}" Padding="5">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
@@ -173,7 +173,7 @@
             <TextBlock Text="Nastavení" FontSize="14"/>
         </Button>
         
-        <Button Click="About" Cursor="Hand" Background="{DynamicResource ButtonBackgroundBrush}" Padding="5">
+        <Button TabIndex="8" Click="About" Cursor="Hand" Background="{DynamicResource ButtonBackgroundBrush}" Padding="5">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"
