@@ -10,13 +10,15 @@ public partial class MainPage : Page
     private IReaderService _readerService { get; set; }
     private IBookService _bookService { get; set; }
     private ILibraryService _libraryService { get; set; }
-    public MainPage(IReaderService readerService, IBookService bookService, ILibraryService libraryService)
+    private IBookTransactionService _bookTransactionService { get; set; }
+    public MainPage(IReaderService readerService, IBookService bookService, ILibraryService libraryService, IBookTransactionService bookTransactionService)
     {
         InitializeComponent();
 
         _readerService = readerService;
         _bookService = bookService;
         _libraryService = libraryService;
+        _bookTransactionService = bookTransactionService;
 
         //Loaded += OnLoaded;
     }
