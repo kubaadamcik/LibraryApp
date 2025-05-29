@@ -24,7 +24,6 @@ public partial class ReaderManagement : Page
         _libraryService = libraryService;
 
 
-        _readerService.ContextChanged += GetAllReaders;
         Loaded += OnLoaded;
     }
 

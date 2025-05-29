@@ -7,7 +7,6 @@ namespace Library.Application.Services;
 
 public class ReaderService(DatabaseContext context) : IReaderService
 {
-    public event Func<Task> ContextChanged;
 
     public async Task<Reader> GetReaderWithId(int id)
     {
@@ -25,7 +24,6 @@ public class ReaderService(DatabaseContext context) : IReaderService
 
         await context.SaveChangesAsync();
 
-        ContextChanged.Invoke();
     }
 
     public async Task<List<Reader>> GetAllReaders()
@@ -41,7 +39,6 @@ public class ReaderService(DatabaseContext context) : IReaderService
 
         await context.SaveChangesAsync();
 
-        ContextChanged.Invoke();
 
         return true;
     }

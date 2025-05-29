@@ -36,8 +36,8 @@
                  Background="{DynamicResource ButtonBackgroundBrush}"
                  Foreground="{DynamicResource ButtonForegroundBrush}"/>
 
-        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Vertical" Margin="20" HorizontalAlignment="Center">
-            <TextBlock x:Name="TbReaderDetails" FontSize="16" Foreground="{DynamicResource ButtonForegroundBrush}" HorizontalAlignment="Center" Width="200"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Vertical" Margin="20" HorizontalAlignment="Center" Width="300">
+            <TextBlock x:Name="TbReaderDetails" FontSize="16" Foreground="{DynamicResource ButtonForegroundBrush}" HorizontalAlignment="Center"/>
             <Button x:Name="btn_removeReader" Content="Vymazat čtenáře" Padding="10" Click="RemoveReader" Visibility="Collapsed" HorizontalAlignment="Center" Width="200"/>
             <Button x:Name="btn_showBorrowedBooks" Content="Zobrazit půjčené knihy" Padding="10" Visibility="Collapsed" HorizontalAlignment="Center" Width="200"/>
         </StackPanel>
