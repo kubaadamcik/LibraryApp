@@ -74,20 +74,11 @@ public partial class ReaderManagement : Page
 
     private void ShowReaderInfo(object sender, SelectionChangedEventArgs e)
     {
-        LvReaderInfo.Items.Clear();
-
-        btn_removeReader.Visibility = Visibility.Visible;
-        btn_showBorrowedBooks.Visibility = Visibility.Visible;
-
         ListBox lb = sender as ListBox;
 
         if (lb.SelectedIndex == -1) return;
 
         Reader reader = _readers[lb.SelectedIndex];
-
-        LvReaderInfo.Items.Add($"Id čtenáře: {reader.Id}");
-        LvReaderInfo.Items.Add($"Jméno: {reader.FullName}");
-        LvReaderInfo.Items.Add($"Emailová adresa: {reader.Email}");
     }
 
     private void NavigateBack(object sender, RoutedEventArgs e)

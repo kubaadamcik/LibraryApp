@@ -7,40 +7,37 @@ namespace ZaverecnyProjekt.View.Pages;
 public partial class ReturnBook : Page
 {
     private IReaderService _readerService;
+    private IBookService _bookService;
+    private ILibraryService _libraryService;
 
     public ReturnBook(IReaderService readerService)
     {
         InitializeComponent();
-
         _readerService = readerService;
-
-        Loaded += OnLoaded;
+        
+        UpdateListboxes();
     }
 
-    private void OnLoaded(object sender, RoutedEventArgs e)
+    private async void UpdateListboxes()
     {
-        if (Window.GetWindow(this) is Window window)
+        var readers = await _readerService.GetAllReaders();
+
+        LbReaders.Items.Clear();
+        LbBooks.Items.Clear();
+
+        foreach (var reader in readers)
         {
-            window.Height = this.Height;
-            window.Width = this.Width;
+            LbReaders.Items.Add(reader.FullName);
         }
     }
-    
-    private void OnReaderSelected(object sender, SelectionChangedEventArgs e)
-    {
-        // Zde načtete knihy vybraného čtenáře
-    }
-
-    private void ReturnBook_Click(object sender, RoutedEventArgs e)
-    {
-        // Zde implementujete logiku pro vrácení knihy
-    }
-
 
     private void NavigateBack(object sender, RoutedEventArgs e)
     {
         NavigationService.GoBack();
     }
 
-    // Add your logic for the specific page here
+    private async void ReturnBook_Click(object sender, RoutedEventArgs e)
+    {
+        // Implementace vrácení knihy
+    }
 }

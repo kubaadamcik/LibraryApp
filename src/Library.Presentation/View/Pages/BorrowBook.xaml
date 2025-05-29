@@ -35,7 +35,7 @@
             <Label HorizontalAlignment="Right" VerticalAlignment="Center" Background="White"
                    Content="Farma zvířat..." Opacity="0.5" x:Name="lbl_searchPlaceholder" Width="150" Height="30"/>
             <TextBox VerticalAlignment="Center" HorizontalAlignment="Right" Background="Transparent" Width="150" Height="30" HorizontalContentAlignment="Left"
-                     x:Name="tb_searchBox" GotFocus="RemoveSearchPlaceholder"/>
+                     x:Name="tb_searchBox" GotFocus="RemoveSearchPlaceholder" Foreground="{DynamicResource ButtonForegroundBrush}"/>
             <Button Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Najít" Height="30" Padding="5, 0, 5, 0"
                     FontSize="11" Foreground="{DynamicResource ButtonForegroundBrush}" Background="{DynamicResource ButtonBackgroundBrush}"
                     Click="CreateBook"/>

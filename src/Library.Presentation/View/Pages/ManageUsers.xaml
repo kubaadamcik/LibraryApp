@@ -3,31 +3,43 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-      xmlns:local="clr-namespace:ZaverecnyProjekt.View.Pages"
       mc:Ignorable="d"
       Title="ManageUsers" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundBrush}">
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
 
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
             <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"/>
         </Grid>
 
-        <!-- Add your controls specific to the page below -->
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="LbReaders" 
+                 SelectionChanged="ShowReaderInfo"
+                 Width="150" Height="200" VerticalAlignment="Top" HorizontalAlignment="Left"
+                 Background="{DynamicResource ButtonBackgroundBrush}"
+                 Foreground="{DynamicResource ButtonForegroundBrush}"/>
+        
+        <ListBox Grid.Row="1" Grid.Column="1" x:Name="LbBooks" 
+                 SelectionChanged="ShowReaderInfo"
+                 Width="150" Height="200" VerticalAlignment="Top" HorizontalAlignment="Right"
+                 Background="{DynamicResource ButtonBackgroundBrush}"
+                 Foreground="{DynamicResource ButtonForegroundBrush}"/>
 
+        <StackPanel Grid.Row="1" Grid.Column="1" VerticalAlignment="Bottom" Orientation="Vertical" Margin="20" HorizontalAlignment="Center">
+            <TextBlock x:Name="TbReaderDetails" FontSize="16" Foreground="{DynamicResource ButtonForegroundBrush}" HorizontalAlignment="Center" Width="200"/>
+            <Button x:Name="btn_removeReader" Content="Vymazat čtenáře" Padding="10" Click="RemoveReader" Visibility="Collapsed" HorizontalAlignment="Center" Width="200"/>
+            <Button x:Name="btn_showBorrowedBooks" Content="Zobrazit půjčené knihy" Padding="10" Visibility="Collapsed" HorizontalAlignment="Center" Width="200"/>
+        </StackPanel>
     </Grid>
 </Page>

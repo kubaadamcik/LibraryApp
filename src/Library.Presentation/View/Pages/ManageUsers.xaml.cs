@@ -1,28 +1,30 @@
 using System.Windows;
 using System.Windows.Controls;
 using Library.Application.Interfaces;
+using Library.Domain.Entities;
 
 namespace ZaverecnyProjekt.View.Pages;
 
 public partial class ManageUsers : Page
 {
-    private IReaderService _readerService;
+    private readonly IReaderService _readerService;
+    private List<Reader> _readers;
 
     public ManageUsers(IReaderService readerService)
     {
         InitializeComponent();
-
         _readerService = readerService;
-
-        Loaded += OnLoaded;
+        LoadReaders();
     }
 
-    private void OnLoaded(object sender, RoutedEventArgs e)
+    private async void LoadReaders()
     {
-        if (Window.GetWindow(this) is Window window)
+        LbReaders.Items.Clear();
+        _readers = await _readerService.GetAllReaders();
+
+        foreach (var reader in _readers)
         {
-            window.Height = this.Height;
-            window.Width = this.Width;
+            LbReaders.Items.Add(reader.FullName);
         }
     }
 
@@ -31,5 +33,35 @@ public partial class ManageUsers : Page
         NavigationService.GoBack();
     }
 
-    // Add your logic for the specific page here
+    private void ShowReaderInfo(object sender, SelectionChangedEventArgs e)
+    {
+        if (LbReaders.SelectedIndex == -1) return;
+
+        var reader = _readers[LbReaders.SelectedIndex];
+
+        TbReaderDetails.Text =
+            $"Id čtenáře: {reader.Id}\n" +
+            $"Jméno: {reader.FullName}\n" +
+            $"Email: {reader.Email}";
+
+        btn_removeReader.Visibility = Visibility.Visible;
+        btn_showBorrowedBooks.Visibility = Visibility.Visible;
+    }
+
+    private async void RemoveReader(object sender, RoutedEventArgs e)
+    {
+        if (LbReaders.SelectedIndex == -1) return;
+
+        var reader = _readers[LbReaders.SelectedIndex];
+
+        if (MessageBox.Show($"Opravdu chcete vymazat čtenáře {reader.FullName}?", "Potvrzení",
+                MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+        {
+            await _readerService.RemoveReader(reader);
+            LoadReaders();
+            TbReaderDetails.Text = "";
+            btn_removeReader.Visibility = Visibility.Collapsed;
+            btn_showBorrowedBooks.Visibility = Visibility.Collapsed;
+        }
+    }
 }

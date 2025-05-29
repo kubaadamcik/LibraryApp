@@ -8,17 +8,15 @@
       Title="About" d:DesignHeight="500" d:DesignWidth="600" Background="{DynamicResource BackgroundBrush}">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
-            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="0.2*"></RowDefinition>
         </Grid.RowDefinitions>
 
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
@@ -26,8 +24,55 @@
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
                     Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"></Button>
         </Grid>
-
+        
         <!-- Add your controls specific to the page below -->
+        <ScrollViewer Grid.Column="1" Grid.Row="1" Margin="0" VerticalScrollBarVisibility="Auto">
+            <TextBlock TextWrapping="Wrap" FontSize="16" FontFamily="Segoe UI" Foreground="{DynamicResource ButtonForegroundBrush}">
+                <Run Text="Nápověda k aplikaci Knihovna" FontSize="20" FontWeight="Bold"/>
+                <LineBreak/><LineBreak/>
+        
+                <Run Text="📚 Půjčení knihy" FontWeight="Bold"/>
+                <LineBreak/>
+                Vyberte uživatele, který si chce knihu půjčit.
+                <LineBreak/>
+                Vyberte knihu, kterou si chce půjčit.
+                <LineBreak/>
+                Klikněte na tlačítko „Zapůjčit“.
+                <LineBreak/><LineBreak/>
 
+                <Run Text="📥 Vrácení knihy" FontWeight="Bold"/>
+                <LineBreak/>
+                Vyberte uživatele, který vrací knihu.
+                <LineBreak/>
+                Zobrazí se seznam jeho vypůjčených knih.
+                <LineBreak/>
+                Vyberte knihu a klikněte na „Vrátit“.
+                <LineBreak/><LineBreak/>
+
+                <Run Text="🔍 Zobrazení knih" FontWeight="Bold"/>
+                <LineBreak/>
+                Zobrazí všechny knihy dostupné v knihovně.
+                <LineBreak/><LineBreak/>
+
+                <Run Text="👤 Registrace uživatele" FontWeight="Bold"/>
+                <LineBreak/>
+                Vyplňte jméno a e-mail, poté klikněte na „Uložit uživatele“.
+                <LineBreak/><LineBreak/>
+
+                <Run Text="🧾 Správa uživatelů" FontWeight="Bold"/>
+                <LineBreak/>
+                Umožňuje upravit nebo smazat uživatele.
+                <LineBreak/><LineBreak/>
+
+                <Run Text="📖 Správa knih" FontWeight="Bold"/>
+                <LineBreak/>
+                Přidávání nebo mazání knih z databáze pomocí tlačítek
+                <LineBreak/><LineBreak/>
+
+                <Run Text="⚙️ Nastavení" FontWeight="Bold"/>
+                <LineBreak/>
+                Přepnutí světlého/tmavého režimu, resetování nastavení a vypnutí aplikace.
+            </TextBlock>
+        </ScrollViewer>
     </Grid>
 </Page>
