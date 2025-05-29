@@ -69,7 +69,10 @@ public partial class BorrowBook : Page
 
         if (await _libraryService.BorrowBook(bookId, readerId))
         {
-            MessageBox.Show("Kniha byla zapůjčena", "Úspěch");
+            var book = await _bookService.GetBookWithId(bookId);
+            var reader = await _readerService.GetReaderWithId(readerId);
+            
+            MessageBox.Show($"Kniha {book.Title} byla zapůjčena čtenáři {reader.FullName}", "Úspěch");
             return;
         }
 

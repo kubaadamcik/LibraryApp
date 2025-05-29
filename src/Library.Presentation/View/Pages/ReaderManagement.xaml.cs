@@ -3,21 +3,25 @@ using System.Windows.Controls;
 using Library.Application.Interfaces;
 using Library.Domain.Entities;
 using Library.Domain.ValueObjects;
+using ZaverecnyProjekt.View.Dialogs;
 
 namespace ZaverecnyProjekt.View.Pages;
 
 public partial class ReaderManagement : Page
 {
     private IReaderService _readerService;
+    private IBookTransactionService _bookTransactionService;
+    private ILibraryService _libraryService;
     private List<Reader> _readers { get; set; }
 
 
-    public ReaderManagement(IReaderService readerService)
+    public ReaderManagement(IReaderService readerService, IBookTransactionService bookTransactionService, ILibraryService libraryService)
     {
         InitializeComponent();
 
         _readerService = readerService;
-
+        _bookTransactionService = bookTransactionService;
+        _libraryService = libraryService;
 
 
         _readerService.ContextChanged += GetAllReaders;
@@ -98,5 +102,18 @@ public partial class ReaderManagement : Page
     private void RemoveReader(object sender, RoutedEventArgs e)
     {
         _readerService.RemoveReader(_readers[LbReaders.SelectedIndex]);
+    }
+
+    private async void ShowReaderBorrowedBooks(object sender, RoutedEventArgs e)
+    {
+        if (LbReaders.SelectedIndex == -1) return;
+        
+        var reader = _readers[LbReaders.SelectedIndex];
+
+        var transactions = await _bookTransactionService.GetReaderTransactions(reader.Id);
+
+        var dialog = new ShowReaderTransactions(_libraryService, _bookTransactionService, transactions);
+        
+        dialog.ShowDialog();
     }
 }

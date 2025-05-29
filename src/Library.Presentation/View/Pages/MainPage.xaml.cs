@@ -34,7 +34,7 @@ public partial class MainPage : Page
 
     private void ManageReaders(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new ReaderManagement(_readerService));
+        NavigationService.Navigate(new ReaderManagement(_readerService, _bookTransactionService, _libraryService));
     }
 
     private void BorrowBook(object sender, RoutedEventArgs e)

@@ -62,6 +62,7 @@
 
         <Button x:Name="btn_removeReader" Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Vymazat čtenáře" Visibility="Collapsed" Padding="10"
                 Click="RemoveReader"></Button>
-        <Button x:Name="btn_showBorrowedBooks" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Zobrazit půjčené knihy" Visibility="Collapsed" Padding="10"></Button>
+        <Button x:Name="btn_showBorrowedBooks" Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Zobrazit půjčené knihy" 
+                Visibility="Collapsed" Padding="10" Click="ShowReaderBorrowedBooks"></Button>
     </Grid>
 </Page>

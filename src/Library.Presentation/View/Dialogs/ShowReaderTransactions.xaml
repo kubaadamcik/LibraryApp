@@ -5,14 +5,24 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:ZaverecnyProjekt.View.Dialogs"
         mc:Ignorable="d"
-        Title="ShowReaderTransactions" Height="450" Width="450">
+        Title="ShowReaderTransactions" Height="450" Width="450"
+        DataContext="{Binding RelativeSource={RelativeSource Self}}">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <ListBox x:Name="LbBooks"></ListBox>
+
+        <DataGrid AutoGenerateColumns="True" x:Name="DgTransactions" ItemsSource="{Binding Transactions}">
+            <!--
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Název knihy" Binding="{Binding Book.Title}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Čtenář" Binding="{Binding Reader.FullName}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Datum půjčení" Binding="{Binding BorrowedDate}"></DataGridTextColumn>
+            </DataGrid.Columns>
+            -->
+        </DataGrid>
         
-        <Button Grid.Row="1" Click="ReturnBook"></Button>
+        <Button Grid.Row="1"></Button>
     </Grid>
 </Window>

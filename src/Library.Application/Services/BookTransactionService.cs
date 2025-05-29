@@ -16,8 +16,10 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
 
         var bookTransaction = new BookTransaction
         {
+            Book = book,
             BookId = bookId,
-            ReaderId = readerId
+            ReaderId = readerId,
+            Reader = reader
         };
 
         await context.BookTransactions.AddAsync(bookTransaction);
@@ -33,18 +35,11 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
         return await transactions.CountAsync();
     }
 
-    public async Task<List<Book>> GetReaderBorrowedBooks(int readerId)
+    public async Task<List<BookTransaction>> GetReaderTransactions(int readerId)
     {
-        var transactions = context.BookTransactions.Where(t => t.ReaderId == readerId);
+        var transactions = context.BookTransactions.Where(t => t.ReaderId == readerId).ToList();
 
-        List<Book> books = null;
-
-        foreach (var transaction in transactions)
-        {
-            books.Add(await bookService.GetBookWithId(transaction.BookId));
-        }
-
-        return books;
+        return transactions;
     }
 
     public async Task<int> CountBorrowedBooks(int bookId)

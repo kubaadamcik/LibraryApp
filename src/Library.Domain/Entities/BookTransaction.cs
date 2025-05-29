@@ -21,5 +21,6 @@ public class BookTransaction
     {
         BorrowedDate = DateTime.Now;
         IsReturned = false;
+        
     }
 }
