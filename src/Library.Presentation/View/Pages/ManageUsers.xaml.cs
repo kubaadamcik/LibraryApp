@@ -8,12 +8,14 @@ namespace ZaverecnyProjekt.View.Pages;
 public partial class ManageUsers : Page
 {
     private readonly IReaderService _readerService;
+    private IBookTransactionService _bookTransactionService;
     private List<Reader> _readers;
 
-    public ManageUsers(IReaderService readerService)
+    public ManageUsers(IReaderService readerService, IBookTransactionService bookTransactionService)
     {
         InitializeComponent();
         _readerService = readerService;
+        _bookTransactionService = bookTransactionService;
         LoadReaders();
     }
 
@@ -58,6 +60,7 @@ public partial class ManageUsers : Page
                 MessageBoxButton.YesNo) == MessageBoxResult.Yes)
         {
             await _readerService.RemoveReader(reader);
+            await _bookTransactionService.DeleteUserTransactions(reader.Id);
             LoadReaders();
             TbReaderDetails.Text = "";
             btn_removeReader.Visibility = Visibility.Collapsed;

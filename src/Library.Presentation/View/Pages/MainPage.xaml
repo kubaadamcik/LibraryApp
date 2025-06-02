@@ -130,7 +130,7 @@
             <TextBlock Text="Spravovat uživatele" TextWrapping="Wrap" TextAlignment="Center" FontSize="20" FontWeight="Bold"/>
         </Button>
 
-        <Button TabIndex="6" Click="ManageBorrows" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
+        <Button TabIndex="6" Click=" ManageBorrows" Cursor="Hand" Margin="5" FontWeight="Medium" Background="{DynamicResource ButtonBackgroundBrush}">
             <Button.Template>
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border"

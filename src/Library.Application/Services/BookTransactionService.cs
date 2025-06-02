@@ -58,4 +58,16 @@ public class BookTransactionService(DatabaseContext context, IBookService bookSe
 
         await context.SaveChangesAsync();
     }
+
+    public async Task DeleteUserTransactions(int readerId)
+    {
+        var transactions = context.BookTransactions.Where(t => t.ReaderId == readerId);
+
+        foreach (var transaction in transactions)
+        {
+            context.BookTransactions.Remove(transaction);
+        }
+
+        await context.SaveChangesAsync();
+    }
 }

@@ -8,15 +8,27 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Library.Infrastructure.Persistence
 {
-    public class DatabaseContext : DbContext
+    public class DatabaseContext(DbContextOptions<DatabaseContext> options) : DbContext(options)
     {
         public DbSet<Book> Books { get; set; }
         public DbSet<Reader> Readers { get; set; }
         public DbSet<BookTransaction> BookTransactions { get; set; }
 
-        public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-        
+            modelBuilder.Entity<Book>()
+                .Property(e => e.Id)
+                .HasAnnotation("Sqlite:Autoincrement", true);
+
+            modelBuilder.Entity<Reader>()
+                .Property(e => e.Id)
+                .HasAnnotation("Sqlite:Autoincrement", true);
+
+            modelBuilder.Entity<BookTransaction>()
+                .Property(e => e.Id)
+                .HasAnnotation("Sqlite:Autoincrement", true);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

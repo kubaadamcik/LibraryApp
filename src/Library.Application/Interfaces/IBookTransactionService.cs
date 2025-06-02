@@ -10,4 +10,6 @@ public interface IBookTransactionService
     public Task<List<BookTransaction>> GetReaderTransactions(int readerId);
     public Task<int> CountBorrowedBooks(int bookId);
     public Task MarkAsReturned(int bookId, int readerId);
+    public Task DeleteUserTransactions(int readerId);
+    
 }
