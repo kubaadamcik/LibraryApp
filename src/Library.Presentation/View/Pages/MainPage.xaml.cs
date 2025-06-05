@@ -44,7 +44,7 @@ public partial class MainPage : Page
     
     private void ReturnBook(object sender, RoutedEventArgs e)
     {
-        NavigationService.Navigate(new ReturnBook(_readerService, _bookTransactionService));
+        NavigationService.Navigate(new ReturnBook(_readerService, _bookTransactionService, _bookService));;
     }
     
     private void ShowBooks(object sender, RoutedEventArgs e)

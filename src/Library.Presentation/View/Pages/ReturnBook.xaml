@@ -8,36 +8,38 @@
       d:DesignHeight="500" d:DesignWidth="600">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.2*"/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0.7*"/>
+            <ColumnDefinition Width="0.2*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="0.7*" />
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="0.2*"/>
-            <RowDefinition/>
-            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.2*" />
+            <RowDefinition />
+            <RowDefinition Height="0.3*" />
         </Grid.RowDefinitions>
 
         <Grid HorizontalAlignment="Left" VerticalAlignment="Top">
-            <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50"/>
+            <Image Source="../../Resources/Images/GoBack.png" Width="50" Height="50" />
             <Button HorizontalAlignment="Center" VerticalAlignment="Center" Width="50" Height="50"
-                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand"/>
+                    Click="NavigateBack" Opacity="0" Background="Transparent" Cursor="Hand" />
         </Grid>
 
         <Grid Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
-          <ColumnDefinition/>
-                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition />
+                <ColumnDefinition Width="0.2*" />
             </Grid.ColumnDefinitions>
         </Grid>
-        
-        <ListBox Grid.Column="1" x:Name="LbReaders" Grid.Row="1" Background="{DynamicResource ButtonBackgroundBrush}" Foreground="{DynamicResource ButtonForegroundBrush}"
-                 SelectionChanged="ShowBorrowedBooks"/>
-        
-        <ListBox x:Name="LbBooks" Grid.Row="1" Grid.Column="2" Background="{DynamicResource ButtonBackgroundBrush}" Foreground="{DynamicResource ButtonForegroundBrush}"/>
-        
+
+        <ListBox Grid.Column="1" x:Name="LbReaders" Grid.Row="1" Background="{DynamicResource ButtonBackgroundBrush}"
+                 Foreground="{DynamicResource ButtonForegroundBrush}"
+                 SelectionChanged="ShowBorrowedBooks" />
+
+        <ListBox x:Name="LbBooks" Grid.Row="1" Grid.Column="2" Background="{DynamicResource ButtonBackgroundBrush}"
+                 Foreground="{DynamicResource ButtonForegroundBrush}" />
+
         <Button Grid.Row="2" Grid.Column="3" Click="ReturnBook_Click" Width="130" Height="60" Cursor="Hand" Margin="5"
                 FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center"
                 Background="{DynamicResource ButtonBackgroundBrush}">
@@ -45,16 +47,17 @@
                 <ControlTemplate TargetType="Button">
                     <Border x:Name="border" Background="{DynamicResource ButtonBackgroundBrush}"
                             CornerRadius="20" BorderBrush="Gray" BorderThickness="1">
-                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter TargetName="border" Property="Background" Value="{DynamicResource ButtonTriggerBrush}"/>
+                            <Setter TargetName="border" Property="Background"
+                                    Value="{DynamicResource ButtonTriggerBrush}" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
             </Button.Template>
-            <TextBlock Text="Vrátit" TextWrapping="Wrap" TextAlignment="Center" FontSize="14" FontWeight="Bold"/>
+            <TextBlock Text="Vrátit" TextWrapping="Wrap" TextAlignment="Center" FontSize="14" FontWeight="Bold" />
         </Button>
     </Grid>
 </Page>

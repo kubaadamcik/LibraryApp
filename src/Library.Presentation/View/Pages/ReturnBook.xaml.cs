@@ -12,12 +12,14 @@ public partial class ReturnBook : Page
     private ILibraryService _libraryService;
     private IBookTransactionService _bookTransactionService;
     private List<Reader> _readers { get; set; }
-
-    public ReturnBook(IReaderService readerService, IBookTransactionService bookTransactionService)
+    private List<BookTransaction> _transactions { get; set; }
+    
+    public ReturnBook(IReaderService readerService, IBookTransactionService bookTransactionService, IBookService bookService)
     {
         InitializeComponent();
         _readerService = readerService;
         _bookTransactionService = bookTransactionService;
+        _bookService = bookService;
 
         UpdateListboxes();
     }
@@ -42,7 +44,13 @@ public partial class ReturnBook : Page
 
     private async void ReturnBook_Click(object sender, RoutedEventArgs e)
     {
-        // Implementace vrácení knihy
+        ListBox listbox = (ListBox)sender;
+        
+        if (listbox.SelectedIndex < 0 || _readers == null || listbox.SelectedIndex >= _readers.Count)
+            return;  
+        
+        await _libraryService.ReturnBook(_readers[LbReaders.SelectedIndex].Id, _transactions[LbBooks.SelectedIndex].BookId);
+        UpdateListboxes();
     }
 
     private async void ShowBorrowedBooks(object sender, SelectionChangedEventArgs e)
@@ -51,14 +59,17 @@ public partial class ReturnBook : Page
 
         Reader reader = _readers[listbox.SelectedIndex];
 
-        List<BookTransaction> transactions = await _bookTransactionService.GetReaderTransactions(reader.Id);
+        _transactions = await _bookTransactionService.GetReaderTransactions(reader.Id);
 
         LbBooks.Items.Clear();
 
-        foreach (var transaction in transactions)
+        foreach (var transaction in _transactions)
         {
-            Book book = await _bookService.GetBookWithId(transaction.BookId);
-            LbBooks.Items.Add(book.Title);
+            if (transaction.IsReturned == false)
+            {
+                Book book = await _bookService.GetBookWithId(transaction.BookId);
+                LbBooks.Items.Add(book.Title);
+            }
         }
     }
 }
