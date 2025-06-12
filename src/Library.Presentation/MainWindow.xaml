@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ZaverecnyProjekt"
         mc:Ignorable="d"
-        Title="MainWindow" Width="600" Height="500" ResizeMode="CanMinimize">
+        Title="Knihovna" Width="600" Height="500" ResizeMode="CanMinimize">
     
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"></Frame>
